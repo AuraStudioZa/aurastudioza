@@ -28,6 +28,13 @@ export const metadata: Metadata = {
     title: "InvoiceFast by AuraStudioZa",
     description: "Create, export, and track invoices with a clean workflow built for freelancers.",
   },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({
