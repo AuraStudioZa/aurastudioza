@@ -1,3 +1,7 @@
+"use client";
+
+import { useId } from "react";
+
 type AuraStudioZaMarkProps = {
   variant?: "compact" | "hero";
   className?: string;
@@ -5,6 +9,10 @@ type AuraStudioZaMarkProps = {
 
 export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraStudioZaMarkProps) {
   const isHero = variant === "hero";
+  const uid = useId().replace(/:/g, "");
+  const auraAGradient = `auraAGradient-${uid}`;
+  const auraGlow = `auraGlow-${uid}`;
+  const goldText = `goldText-${uid}`;
 
   return (
     <svg
@@ -15,16 +23,16 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="auraAGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={auraAGradient} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#1e2a5a" />
           <stop offset="55%" stopColor="#2f3f7a" />
           <stop offset="100%" stopColor="#c9a227" />
         </linearGradient>
-        <linearGradient id="auraGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id={auraGlow} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#5b6cff" stopOpacity="0.45" />
           <stop offset="100%" stopColor="#e8c547" stopOpacity="0.5" />
         </linearGradient>
-        <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id={goldText} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#e8c547" />
           <stop offset="100%" stopColor="#c9a227" />
         </linearGradient>
@@ -32,10 +40,10 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
 
       {isHero ? (
         <>
-          <ellipse cx="72" cy="52" rx="54" ry="20" fill="url(#auraGlow)" />
+          <ellipse cx="72" cy="52" rx="54" ry="20" fill={`url(#${auraGlow})`} />
           <path
             d="M42 118 L72 38 L102 118 Z"
-            fill="url(#auraAGradient)"
+            fill={`url(#${auraAGradient})`}
             stroke="#c9a227"
             strokeWidth="2"
             strokeLinejoin="round"
@@ -44,7 +52,7 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
           <text
             x="130"
             y="78"
-            fill="url(#goldText)"
+            fill={`url(#${goldText})`}
             fontFamily="Georgia, 'Times New Roman', serif"
             fontSize="42"
             fontWeight="700"
@@ -64,7 +72,7 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
           <text
             x="292"
             y="118"
-            fill="url(#goldText)"
+            fill={`url(#${goldText})`}
             fontFamily="Georgia, 'Times New Roman', serif"
             fontSize="42"
             fontWeight="700"
@@ -84,16 +92,16 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
         </>
       ) : (
         <>
-          <ellipse cx="28" cy="18" rx="22" ry="8" fill="url(#auraGlow)" />
+          <ellipse cx="28" cy="18" rx="22" ry="8" fill={`url(#${auraGlow})`} />
           <path
             d="M14 52 L28 14 L42 52 Z"
-            fill="url(#auraAGradient)"
+            fill={`url(#${auraAGradient})`}
             stroke="#c9a227"
             strokeWidth="1.5"
             strokeLinejoin="round"
           />
           <path d="M19 44 H37" stroke="#f4e6b8" strokeWidth="2" strokeLinecap="round" />
-          <text x="52" y="28" fill="url(#goldText)" fontFamily="Georgia, serif" fontSize="17" fontWeight="700">
+          <text x="52" y="28" fill={`url(#${goldText})`} fontFamily="Georgia, serif" fontSize="17" fontWeight="700">
             Aura
           </text>
           <text
@@ -106,7 +114,7 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
           >
             Studio
           </text>
-          <text x="118" y="48" fill="url(#goldText)" fontFamily="Georgia, serif" fontSize="17" fontWeight="700">
+          <text x="118" y="48" fill={`url(#${goldText})`} fontFamily="Georgia, serif" fontSize="17" fontWeight="700">
             Za
           </text>
         </>

@@ -1,7 +1,7 @@
 import { AuraStudioZaMark } from "./aurastudioza-mark";
 
 type BrandLogoProps = {
-  href?: string;
+  href?: string | null;
   variant?: "compact" | "hero";
 };
 
@@ -13,7 +13,7 @@ export function BrandLogo({ href = "/", variant = "compact" }: BrandLogoProps) {
     />
   );
 
-  if (!href) {
+  if (href === null) {
     return <span className="brand brand-logo">{mark}</span>;
   }
 

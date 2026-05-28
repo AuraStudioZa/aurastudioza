@@ -19,6 +19,10 @@ const themeInitScript = `
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aurastudioza.com"),
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
   keywords: [
     "AuraStudioZa",
     "freelancer software South Africa",

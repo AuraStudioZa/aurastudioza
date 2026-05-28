@@ -95,7 +95,7 @@ export function StudioHomePage() {
               </p>
             </div>
             <div className="studio-hero-logo glass-panel">
-              <BrandLogo href="/" variant="hero" />
+              <BrandLogo href={null} variant="hero" />
             </div>
           </div>
         </section>
