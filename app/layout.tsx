@@ -5,28 +5,16 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AuraStudioZa | InvoiceFast - Professional Online Invoice Generator",
-  description:
-    "Create professional invoices, export PDFs, track history, and upgrade to Pro for logo, email sending, and no watermark.",
+  metadataBase: new URL("https://aurastudioza.com"),
   keywords: [
-    "invoice generator South Africa",
-    "freelance invoicing",
-    "online invoice maker",
-    "PDF invoices",
-    "VAT friendly invoices",
+    "AuraStudioZa",
+    "freelancer software South Africa",
+    "small business tools",
     "InvoiceFast",
+    "invoice generator",
   ],
-  openGraph: {
-    title: "InvoiceFast by AuraStudioZa",
-    description: "Professional invoices in minutes. Built for freelancers and small teams.",
-    url: "https://aurastudioza.com",
-    siteName: "AuraStudioZa",
-    type: "website",
-  },
   twitter: {
     card: "summary_large_image",
-    title: "InvoiceFast by AuraStudioZa",
-    description: "Create, export, and track invoices with a clean workflow built for freelancers.",
   },
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? {

@@ -1,13 +1,23 @@
 "use client";
 
 import { useEffect } from "react";
-import { faqs, features, navLinks, plans, socialProof, steps } from "./content";
+import { faqs, features, plans, socialProof, steps } from "./content";
 
-function Header() {
+type MarketingPageProps = {
+  basePath?: string;
+};
+
+function Header({ basePath }: { basePath: string }) {
+  const navLinks = [
+    { href: `${basePath}#features`, label: "Features" },
+    { href: `${basePath}#pricing`, label: "Pricing" },
+    { href: `${basePath}#faq`, label: "FAQ" },
+  ];
+
   return (
     <header className="site-header">
       <div className="container nav-wrap">
-        <a href="#" className="brand" aria-label="AuraStudioZa Home">
+        <a href="/" className="brand" aria-label="AuraStudioZa Home">
           <span className="brand-mark" aria-hidden="true">
             AS
           </span>
@@ -35,7 +45,7 @@ function Header() {
   );
 }
 
-function HeroSection() {
+function HeroSection({ basePath }: { basePath: string }) {
   return (
     <section className="hero section">
       <div className="container hero-grid">
@@ -49,7 +59,11 @@ function HeroSection() {
             <a className="btn btn-primary btn-lg" href="#" aria-label="Start free now">
               Start Free
             </a>
-            <a className="btn btn-secondary btn-lg" href="#pricing" aria-label="View pricing plans">
+            <a
+              className="btn btn-secondary btn-lg"
+              href={`${basePath}#pricing`}
+              aria-label="View pricing plans"
+            >
               View Pricing
             </a>
           </div>
@@ -247,7 +261,7 @@ function FaqSection() {
   );
 }
 
-function FinalCtaSection() {
+function FinalCtaSection({ basePath }: { basePath: string }) {
   return (
     <section className="section">
       <div className="container cta-banner reveal">
@@ -259,7 +273,7 @@ function FinalCtaSection() {
           <a className="btn btn-primary btn-lg" href="#">
             Start Free
           </a>
-          <a className="btn btn-ghost btn-lg" href="#pricing">
+          <a className="btn btn-ghost btn-lg" href={`${basePath}#pricing`}>
             View Pricing
           </a>
         </div>
@@ -297,7 +311,7 @@ function Footer() {
   );
 }
 
-export function MarketingPage() {
+export function MarketingPage({ basePath = "/invoicefast" }: MarketingPageProps) {
   useEffect(() => {
     const revealElements = document.querySelectorAll(".reveal");
 
@@ -326,16 +340,16 @@ export function MarketingPage() {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <Header />
+      <Header basePath={basePath} />
       <main id="main-content">
-        <HeroSection />
+        <HeroSection basePath={basePath} />
         <SocialProofSection />
         <FeaturesSection />
         <StepsSection />
         <PricingSection />
         <AboutSection />
         <FaqSection />
-        <FinalCtaSection />
+        <FinalCtaSection basePath={basePath} />
       </main>
       <Footer />
     </>

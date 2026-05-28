@@ -1,9 +1,3 @@
-export const navLinks = [
-  { href: "#features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
-];
-
 export const socialProof = [
   "Freelance Designers",
   "Consultants",
