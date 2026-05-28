@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { BrandLogo } from "../brand-logo";
+import { SiteFooter } from "../site-footer";
 import { ThemeToggle } from "../theme-toggle";
 import { products } from "./content";
 
@@ -23,32 +24,6 @@ function StudioHeader() {
         <ThemeToggle />
       </div>
     </header>
-  );
-}
-
-function StudioFooter() {
-  return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
-        <div>
-          <p className="footer-brand">AuraStudioZa</p>
-          <p className="footer-copy">Practical software for freelancers and small businesses.</p>
-        </div>
-        <nav aria-label="Footer links">
-          <ul className="footer-links">
-            <li>
-              <a href="#">Terms of Service</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
   );
 }
 
@@ -145,7 +120,7 @@ export function StudioHomePage() {
           </div>
         </section>
       </main>
-      <StudioFooter />
+      <SiteFooter />
     </>
   );
 }

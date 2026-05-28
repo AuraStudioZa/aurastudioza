@@ -885,6 +885,55 @@ h3 {
   }
 }
 
+.legal-page {
+  padding-top: var(--space-5);
+}
+
+.legal-content {
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  max-width: 760px;
+}
+
+.legal-content h2 {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+  font-size: 1.2rem;
+}
+
+.legal-content p,
+.legal-content li {
+  color: var(--color-text-muted);
+}
+
+.legal-content a {
+  color: var(--color-primary-strong);
+  text-decoration: underline;
+}
+
+.legal-updated {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.legal-note {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.contact-card {
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  background: var(--color-muted-surface);
+}
+
+.contact-card h2 {
+  margin-top: 0;
+}
+
 @media (max-width: 767px) {
   .nav-wrap {
     min-height: 64px;

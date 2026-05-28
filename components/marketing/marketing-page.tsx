@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { appLinks } from "../../lib/site-links";
 import { BrandLogo } from "../brand-logo";
+import { SiteFooter } from "../site-footer";
 import { ThemeToggle } from "../theme-toggle";
 import { faqs, features, plans, socialProof, steps } from "./content";
 
@@ -31,10 +33,10 @@ function Header({ basePath }: { basePath: string }) {
         </nav>
         <div className="nav-actions">
           <ThemeToggle />
-          <a className="btn btn-ghost" href="#" aria-label="Sign in to InvoiceFast">
+          <a className="btn btn-ghost" href={appLinks.login} aria-label="Sign in to InvoiceFast">
             Sign In
           </a>
-          <a className="btn btn-primary" href="#" aria-label="Start free with InvoiceFast">
+          <a className="btn btn-primary" href={appLinks.signup} aria-label="Start free with InvoiceFast">
             Start Free
           </a>
         </div>
@@ -54,7 +56,7 @@ function HeroSection({ basePath }: { basePath: string }) {
             Create, export, and track invoices with a clean workflow built for freelancers.
           </p>
           <div className="hero-cta-group">
-            <a className="btn btn-primary btn-lg" href="#" aria-label="Start free now">
+            <a className="btn btn-primary btn-lg" href={appLinks.signup} aria-label="Start free now">
               Start Free
             </a>
             <a
@@ -195,7 +197,7 @@ function PricingSection() {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <a className="btn btn-secondary btn-full" href="#">
+            <a className="btn btn-secondary btn-full" href={appLinks.signup}>
               {plans.free.cta}
             </a>
           </article>
@@ -212,7 +214,7 @@ function PricingSection() {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <a className="btn btn-primary btn-full" href="#">
+            <a className="btn btn-primary btn-full" href={appLinks.signupPro}>
               {plans.pro.cta}
             </a>
           </article>
@@ -268,7 +270,7 @@ function FinalCtaSection({ basePath }: { basePath: string }) {
           <h2>Start free today and send your first invoice in minutes.</h2>
         </div>
         <div className="cta-actions">
-          <a className="btn btn-primary btn-lg" href="#">
+          <a className="btn btn-primary btn-lg" href={appLinks.signup}>
             Start Free
           </a>
           <a className="btn btn-ghost btn-lg" href={`${basePath}#pricing`}>
@@ -277,35 +279,6 @@ function FinalCtaSection({ basePath }: { basePath: string }) {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
-        <div>
-          <p className="footer-brand">AuraStudioZa</p>
-          <p className="footer-copy">InvoiceFast - Create professional invoices in minutes.</p>
-        </div>
-        <nav aria-label="Footer links">
-          <ul className="footer-links">
-            <li>
-              <a href="#">Terms of Service</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-            <li>
-              <a href="#">Support</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
   );
 }
 
@@ -349,7 +322,7 @@ export function MarketingPage({ basePath = "/invoicefast" }: MarketingPageProps)
         <FaqSection />
         <FinalCtaSection basePath={basePath} />
       </main>
-      <Footer />
+      <SiteFooter tagline="InvoiceFast - Create professional invoices in minutes." showSupport />
     </>
   );
 }

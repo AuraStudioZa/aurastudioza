@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
+import { Analytics } from "../components/analytics";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
@@ -52,6 +53,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {children}
+        <Analytics />
       </body>
     </html>
   );
