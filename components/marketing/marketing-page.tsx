@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { BrandLogo } from "../brand-logo";
+import { ThemeToggle } from "../theme-toggle";
 import { faqs, features, plans, socialProof, steps } from "./content";
 
 type MarketingPageProps = {
@@ -16,9 +17,9 @@ function Header({ basePath }: { basePath: string }) {
   ];
 
   return (
-    <header className="site-header">
+    <header className="site-header glass-panel">
       <div className="container nav-wrap">
-        <BrandLogo href="/" />
+        <BrandLogo href="/" variant="compact" />
         <nav aria-label="Main navigation">
           <ul className="nav-links">
             {navLinks.map((link) => (
@@ -29,6 +30,7 @@ function Header({ basePath }: { basePath: string }) {
           </ul>
         </nav>
         <div className="nav-actions">
+          <ThemeToggle />
           <a className="btn btn-ghost" href="#" aria-label="Sign in to InvoiceFast">
             Sign In
           </a>

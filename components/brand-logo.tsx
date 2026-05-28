@@ -1,28 +1,25 @@
-import Image from "next/image";
+import { AuraStudioZaMark } from "./aurastudioza-mark";
 
 type BrandLogoProps = {
   href?: string;
+  variant?: "compact" | "hero";
 };
 
-export function BrandLogo({ href = "/" }: BrandLogoProps) {
-  const image = (
-    <Image
-      src="/aurastudioza-logo.png"
-      alt="AuraStudioZa — Design, Media, Creative"
-      width={220}
-      height={88}
-      className="brand-logo-image"
-      priority
+export function BrandLogo({ href = "/", variant = "compact" }: BrandLogoProps) {
+  const mark = (
+    <AuraStudioZaMark
+      variant={variant}
+      className={variant === "hero" ? "brand-mark-hero" : "brand-mark-compact"}
     />
   );
 
   if (!href) {
-    return <span className="brand brand-logo">{image}</span>;
+    return <span className="brand brand-logo">{mark}</span>;
   }
 
   return (
     <a href={href} className="brand brand-logo" aria-label="AuraStudioZa Home">
-      {image}
+      {mark}
     </a>
   );
 }
