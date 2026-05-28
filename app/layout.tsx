@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aura Studio ZA | InvoiceFast - Professional Online Invoice Generator",
+  title: "AuraStudioZa | InvoiceFast - Professional Online Invoice Generator",
   description:
     "Create professional invoices, export PDFs, track history, and upgrade to Pro for logo, email sending, and no watermark.",
   keywords: [
@@ -17,15 +17,15 @@ export const metadata: Metadata = {
     "InvoiceFast",
   ],
   openGraph: {
-    title: "InvoiceFast by Aura Studio ZA",
+    title: "InvoiceFast by AuraStudioZa",
     description: "Professional invoices in minutes. Built for freelancers and small teams.",
     url: "https://aurastudioza.com",
-    siteName: "Aura Studio ZA",
+    siteName: "AuraStudioZa",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "InvoiceFast by Aura Studio ZA",
+    title: "InvoiceFast by AuraStudioZa",
     description: "Create, export, and track invoices with a clean workflow built for freelancers.",
   },
 };

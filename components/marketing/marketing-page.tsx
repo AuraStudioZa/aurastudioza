@@ -7,11 +7,11 @@ function Header() {
   return (
     <header className="site-header">
       <div className="container nav-wrap">
-        <a href="#" className="brand" aria-label="Aura Studio ZA Home">
+        <a href="#" className="brand" aria-label="AuraStudioZa Home">
           <span className="brand-mark" aria-hidden="true">
             AS
           </span>
-          <span className="brand-text">Aura Studio ZA</span>
+          <span className="brand-text">AuraStudioZa</span>
         </a>
         <nav aria-label="Main navigation">
           <ul className="nav-links">
@@ -40,7 +40,7 @@ function HeroSection() {
     <section className="hero section">
       <div className="container hero-grid">
         <div className="hero-copy reveal">
-          <p className="eyebrow">InvoiceFast by Aura Studio ZA</p>
+          <p className="eyebrow">InvoiceFast by AuraStudioZa</p>
           <h1>Professional invoices in minutes.</h1>
           <p className="hero-subheadline">
             Create, export, and track invoices with a clean workflow built for freelancers.
@@ -214,10 +214,10 @@ function AboutSection() {
   return (
     <section className="section">
       <div className="container about-block reveal">
-        <p className="eyebrow">About Aura Studio ZA</p>
+        <p className="eyebrow">About AuraStudioZa</p>
         <h2>Built in South Africa, designed for modern independent work</h2>
         <p>
-          Aura Studio ZA builds practical digital products that help people work faster and get paid
+          AuraStudioZa builds practical digital products that help people work faster and get paid
           with less admin. InvoiceFast focuses on clean workflows, secure account history, and
           professional output your clients can trust.
         </p>
@@ -273,7 +273,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <p className="footer-brand">Aura Studio ZA</p>
+          <p className="footer-brand">AuraStudioZa</p>
           <p className="footer-copy">InvoiceFast - Create professional invoices in minutes.</p>
         </div>
         <nav aria-label="Footer links">
