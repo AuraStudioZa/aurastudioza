@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { BrandLogo } from "../brand-logo";
 import { faqs, features, plans, socialProof, steps } from "./content";
 
 type MarketingPageProps = {
@@ -17,12 +18,7 @@ function Header({ basePath }: { basePath: string }) {
   return (
     <header className="site-header">
       <div className="container nav-wrap">
-        <a href="/" className="brand" aria-label="AuraStudioZa Home">
-          <span className="brand-mark" aria-hidden="true">
-            AS
-          </span>
-          <span className="brand-text">AuraStudioZa</span>
-        </a>
+        <BrandLogo href="/" />
         <nav aria-label="Main navigation">
           <ul className="nav-links">
             {navLinks.map((link) => (

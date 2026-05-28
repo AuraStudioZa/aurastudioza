@@ -102,6 +102,18 @@ a {
   font-weight: 700;
 }
 
+.brand-logo {
+  flex-shrink: 0;
+}
+
+.brand-logo-image {
+  display: block;
+  width: auto;
+  height: 52px;
+  max-width: min(200px, 42vw);
+  object-fit: contain;
+}
+
 .brand-mark {
   display: grid;
   place-items: center;

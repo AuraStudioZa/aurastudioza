@@ -1,18 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { BrandLogo } from "../brand-logo";
 import { products } from "./content";
 
 function StudioHeader() {
   return (
     <header className="site-header">
       <div className="container nav-wrap">
-        <a href="/" className="brand" aria-label="AuraStudioZa Home">
-          <span className="brand-mark" aria-hidden="true">
-            AS
-          </span>
-          <span className="brand-text">AuraStudioZa</span>
-        </a>
+        <BrandLogo href="/" />
         <nav aria-label="Main navigation">
           <ul className="nav-links">
             <li>
@@ -87,11 +83,11 @@ export function StudioHomePage() {
       <main id="main-content">
         <section className="studio-hero section">
           <div className="container studio-hero-inner reveal">
-            <p className="eyebrow">AuraStudioZa</p>
+            <p className="eyebrow">Design • Media • Creative</p>
             <h1>Practical software for modern independent work.</h1>
             <p className="studio-hero-subheadline">
-              We build focused tools that help freelancers and small businesses work faster, look
-              professional, and get paid with less admin.
+              AuraStudioZa builds focused tools that help freelancers and small businesses work
+              faster, look professional, and get paid with less admin.
             </p>
           </div>
         </section>
