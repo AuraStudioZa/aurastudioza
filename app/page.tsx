@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { StudioHomePage } from "../components/studio/studio-home-page";
 import { brandOpenGraphImage } from "../lib/brand-assets";
+import { siteUrl } from "../lib/site-metadata";
 
 export const metadata: Metadata = {
-  title: "AuraStudioZa - Practical Software for Freelancers and Small Business",
-  description:
-    "AuraStudioZa builds focused tools for modern independent work. Explore InvoiceFast and future products from one studio.",
+  alternates: { canonical: siteUrl },
   openGraph: {
     title: "AuraStudioZa",
     description: "Practical software for freelancers and small businesses.",
-    url: "https://aurastudioza.com",
+    url: siteUrl,
     siteName: "AuraStudioZa",
     type: "website",
     images: [brandOpenGraphImage],

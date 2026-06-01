@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
 import { ThemeToggle } from "../theme-toggle";
+import { siteLinks } from "../../lib/site-links";
 import { products } from "./content";
 
 function StudioHeader() {
@@ -15,6 +16,9 @@ function StudioHeader() {
           <ul className="nav-links">
             <li>
               <a href="#products">Products</a>
+            </li>
+            <li>
+              <a href={siteLinks.invoicefast}>InvoiceFast</a>
             </li>
             <li>
               <a href="#about">About</a>
@@ -120,7 +124,7 @@ export function StudioHomePage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter showSupport />
     </>
   );
 }

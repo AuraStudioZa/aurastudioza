@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPageShell } from "../../components/legal-page-shell";
+import { pageMetadata } from "../../lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | AuraStudioZa",
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
   description: "How AuraStudioZa and InvoiceFast collect, use, and protect your information.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
@@ -15,41 +16,35 @@ export default function PrivacyPage() {
         InvoiceFast. This policy explains what information we collect and how we use it.
       </p>
       <h2>Information we collect</h2>
-      <ul>
-        <li>Account details you provide (such as name and email) when you sign up for InvoiceFast.</li>
-        <li>Invoice and business data you enter into the product.</li>
-        <li>Basic usage and device data to keep the service secure and reliable.</li>
-        <li>Payment-related information processed by our payment provider (we do not store full card details).</li>
-      </ul>
+      <p>
+        When you use InvoiceFast, we collect account details (such as your email address via our
+        authentication provider), invoice data you enter, and usage information needed to run the
+        service.
+      </p>
       <h2>How we use information</h2>
       <ul>
-        <li>To provide, maintain, and improve our software.</li>
-        <li>To send service-related messages (such as account or billing notices).</li>
-        <li>To prevent abuse, fraud, and security incidents.</li>
-        <li>To comply with legal obligations where applicable.</li>
+        <li>Provide and improve our products</li>
+        <li>Process subscriptions and support requests</li>
+        <li>Send service-related communications</li>
+        <li>Maintain security and prevent abuse</li>
       </ul>
-      <h2>Sharing</h2>
+      <h2>Third-party services</h2>
       <p>
-        We do not sell your personal information. We may share data with trusted service providers
-        (hosting, analytics, email, payments) only as needed to run the service.
+        We use trusted providers for authentication, hosting, payments, and analytics. Their
+        processing is governed by their own policies.
       </p>
-      <h2>Retention</h2>
+      <h2>Data retention</h2>
       <p>
-        We keep information for as long as your account is active or as needed for legal, tax, and
+        We retain your data while your account is active and as needed for legal, security, or
         operational purposes.
       </p>
       <h2>Your rights</h2>
       <p>
-        You may request access, correction, or deletion of your personal information by contacting us.
-        We will respond within a reasonable time.
+        You may request access, correction, or deletion of your personal data by contacting us at
+        the email on our Contact page.
       </p>
       <h2>Contact</h2>
-      <p>
-        For privacy questions, contact us via the <a href="/contact">Contact page</a>.
-      </p>
-      <p className="legal-note">
-        This page is provided for transparency and does not constitute legal advice.
-      </p>
+      <p>Questions about this policy: see our Contact page.</p>
     </LegalPageShell>
   );
 }

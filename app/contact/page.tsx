@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import { contactEmail } from "../../lib/site-links";
 import { LegalPageShell } from "../../components/legal-page-shell";
+import { pageMetadata } from "../../lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Contact | AuraStudioZa",
+export const metadata = pageMetadata({
+  title: "Contact",
   description: "Contact AuraStudioZa for support, billing, and general enquiries.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

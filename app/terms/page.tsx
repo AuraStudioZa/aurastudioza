@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPageShell } from "../../components/legal-page-shell";
+import { pageMetadata } from "../../lib/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | AuraStudioZa",
+export const metadata = pageMetadata({
+  title: "Terms of Service",
   description: "Terms for using AuraStudioZa websites and software products including InvoiceFast.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

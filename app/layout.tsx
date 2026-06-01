@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { Analytics } from "../components/analytics";
+import { SiteJsonLd } from "../components/site-json-ld";
 import { brandAssets, brandOpenGraphImage } from "../lib/brand-assets";
+import { siteUrl } from "../lib/site-metadata";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
@@ -20,7 +22,14 @@ const themeInitScript = `
 `;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aurastudioza.com"),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "AuraStudioZa — Practical Software for Freelancers and Small Business",
+    template: "%s | AuraStudioZa",
+  },
+  description:
+    "AuraStudioZa builds focused tools for modern independent work. Explore InvoiceFast and future products from one studio.",
+  alternates: { canonical: siteUrl },
   icons: {
     icon: [
       { url: brandAssets.favicon, type: "image/svg+xml" },
@@ -59,6 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en-ZA" className={`${inter.variable} ${sora.variable}`} suppressHydrationWarning>
       <body className={inter.className}>
+        <SiteJsonLd />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {children}
         <Analytics />

@@ -13,19 +13,27 @@ export function SiteFooter({
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <p className="footer-brand">AuraStudioZa</p>
+          <p className="footer-brand">
+            <a href={siteLinks.home}>AuraStudioZa</a>
+          </p>
           <p className="footer-copy">{tagline}</p>
         </div>
         <nav aria-label="Footer links">
           <ul className="footer-links">
             <li>
-              <a href={siteLinks.terms}>Terms of Service</a>
+              <a href={siteLinks.home}>Home</a>
             </li>
             <li>
-              <a href={siteLinks.privacy}>Privacy Policy</a>
+              <a href={siteLinks.invoicefast}>InvoiceFast</a>
             </li>
             <li>
               <a href={siteLinks.contact}>Contact</a>
+            </li>
+            <li>
+              <a href={siteLinks.privacy}>Privacy</a>
+            </li>
+            <li>
+              <a href={siteLinks.terms}>Terms</a>
             </li>
             {showSupport ? (
               <li>

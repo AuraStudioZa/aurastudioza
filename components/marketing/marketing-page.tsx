@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { appLinks } from "../../lib/site-links";
+import { appLinks, siteLinks } from "../../lib/site-links";
 import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
 import { ThemeToggle } from "../theme-toggle";
@@ -13,6 +13,7 @@ type MarketingPageProps = {
 
 function Header({ basePath }: { basePath: string }) {
   const navLinks = [
+    { href: siteLinks.home, label: "Studio" },
     { href: `${basePath}#features`, label: "Features" },
     { href: `${basePath}#pricing`, label: "Pricing" },
     { href: `${basePath}#faq`, label: "FAQ" },
