@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { brandOpenGraphImage } from "../../lib/brand-assets";
 
 export const metadata: Metadata = {
   title: "InvoiceFast | AuraStudioZa - Professional Online Invoice Generator",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     url: "https://aurastudioza.com/invoicefast",
     siteName: "AuraStudioZa",
     type: "website",
+    images: [brandOpenGraphImage],
   },
 };
 

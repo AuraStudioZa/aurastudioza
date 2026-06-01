@@ -144,13 +144,14 @@ a {
   display: block;
   width: auto;
   height: 56px;
-  max-width: min(240px, 58vw);
+  max-width: min(300px, 78vw);
 }
 
 .brand-mark-hero {
   display: block;
-  width: min(100%, 420px);
+  width: min(100%, 360px);
   height: auto;
+  margin-inline: auto;
 }
 
 .theme-toggle {

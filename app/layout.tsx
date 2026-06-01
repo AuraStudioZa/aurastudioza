@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { Analytics } from "../components/analytics";
+import { brandAssets, brandOpenGraphImage } from "../lib/brand-assets";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
@@ -21,8 +22,18 @@ const themeInitScript = `
 export const metadata: Metadata = {
   metadataBase: new URL("https://aurastudioza.com"),
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: brandAssets.favicon, type: "image/svg+xml" },
+      { url: brandAssets.markCompactPng, type: "image/png", sizes: "96x96" },
+    ],
+    apple: [{ url: brandAssets.markIconPng, type: "image/png" }],
+  },
+  openGraph: {
+    images: [brandOpenGraphImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [brandOpenGraphImage.url],
   },
   keywords: [
     "AuraStudioZa",
@@ -31,9 +42,6 @@ export const metadata: Metadata = {
     "InvoiceFast",
     "invoice generator",
   ],
-  twitter: {
-    card: "summary_large_image",
-  },
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? {
         verification: {
