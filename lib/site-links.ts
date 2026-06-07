@@ -5,13 +5,16 @@ export const appLinks = {
   signup: `${appBaseUrl}/sign-up`,
   login: `${appBaseUrl}/sign-in`,
   signupPro: `${appBaseUrl}/sign-up?plan=pro`,
+  privacy: `${appBaseUrl}/privacy`,
+  terms: `${appBaseUrl}/terms`,
 } as const;
 
 export const siteLinks = {
   home: "/",
   invoicefast: "/invoicefast",
-  privacy: "/privacy",
-  terms: "/terms",
+  /** Canonical InvoiceFast legal pages (app subdomain). */
+  privacy: appLinks.privacy,
+  terms: appLinks.terms,
   contact: "/contact",
 } as const;
 
