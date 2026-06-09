@@ -7,6 +7,6 @@ export const products = [
       "Live builder, PDF export, invoice history, and Pro features for freelancers and small teams.",
     status: "Live" as const,
     href: "/invoicefast",
-    highlights: ["PDF invoices", "VAT-friendly totals", "From R79/month Pro"],
+    highlights: ["14-day Pro trial", "VAT-inclusive ZAR", "Pro R79 incl. VAT"],
   },
 ];

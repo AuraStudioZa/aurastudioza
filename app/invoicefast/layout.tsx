@@ -6,12 +6,13 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "InvoiceFast",
     description:
-      "Create professional invoices, export PDFs, track history, and upgrade to Pro for logo, email sending, and no watermark.",
+      "InvoiceFast — 14-day full Pro trial (no card). Bank details on PDF, VAT-inclusive ZAR. Then R79/month incl. VAT for unlimited PDFs, logo, email, 50 saved invoices.",
     path: "/invoicefast",
   }),
   openGraph: {
     title: "InvoiceFast by AuraStudioZa",
-    description: "Professional invoices in minutes. Built for freelancers and small teams.",
+    description:
+      "Professional invoices in minutes. 14-day Pro trial, then free tier or R79/month incl. VAT.",
     url: "https://aurastudioza.com/invoicefast",
     siteName: "AuraStudioZa",
     type: "website",

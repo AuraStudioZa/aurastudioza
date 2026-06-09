@@ -37,8 +37,8 @@ function Header({ basePath }: { basePath: string }) {
           <a className="btn btn-ghost" href={appLinks.login} aria-label="Sign in to InvoiceFast">
             Sign In
           </a>
-          <a className="btn btn-primary" href={appLinks.signup} aria-label="Start free with InvoiceFast">
-            Start Free
+          <a className="btn btn-primary" href={appLinks.signup} aria-label="Start 14-day Pro trial with InvoiceFast">
+            Start trial
           </a>
         </div>
       </div>
@@ -57,8 +57,8 @@ function HeroSection({ basePath }: { basePath: string }) {
             Create, export, and track invoices with a clean workflow built for freelancers.
           </p>
           <div className="hero-cta-group">
-            <a className="btn btn-primary btn-lg" href={appLinks.signup} aria-label="Start free now">
-              Start Free
+            <a className="btn btn-primary btn-lg" href={appLinks.signup} aria-label="Start 14-day Pro trial">
+              Start 14-day trial
             </a>
             <a
               className="btn btn-secondary btn-lg"
@@ -69,9 +69,9 @@ function HeroSection({ basePath }: { basePath: string }) {
             </a>
           </div>
           <ul className="hero-bullets" aria-label="Product highlights">
-            <li>Live invoice builder with real-time preview</li>
-            <li>VAT-friendly totals for South African invoicing</li>
-            <li>Secure account-based invoice history</li>
+            <li>14-day full Pro trial — no card required</li>
+            <li>Bank &amp; VAT details on PDFs (all plans)</li>
+            <li>Then R79/month incl. VAT to keep Pro</li>
           </ul>
         </div>
 
@@ -184,30 +184,35 @@ function PricingSection() {
       <div className="container">
         <div className="section-heading reveal">
           <p className="eyebrow">Pricing</p>
-          <h2>Start free, upgrade when you need more power</h2>
+          <h2>Try full Pro free for 14 days</h2>
         </div>
         <div className="pricing-grid">
-          <article className="pricing-card reveal" aria-label="Free plan">
-            <h3>{plans.free.name}</h3>
+          <article
+            className="pricing-card pricing-card-pro reveal"
+            aria-label="Pro trial"
+          >
+            <p className="plan-badge">Start here</p>
+            <h3>{plans.trial.name}</h3>
             <p className="price">
-              {plans.free.price} <span>/month</span>
+              {plans.trial.price}{" "}
+              <span>· {plans.trial.priceSuffix}</span>
             </p>
-            <p className="price-subtext">{plans.free.subtext}</p>
+            <p className="price-subtext">{plans.trial.subtext}</p>
             <ul>
-              {plans.free.features.map((feature) => (
+              {plans.trial.features.map((feature) => (
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <a className="btn btn-secondary btn-full" href={appLinks.signup}>
-              {plans.free.cta}
+            <a className="btn btn-primary btn-full" href={appLinks.signup}>
+              {plans.trial.cta}
             </a>
           </article>
 
-          <article className="pricing-card pricing-card-pro reveal" aria-label="Pro plan">
-            <p className="plan-badge">Most Popular</p>
+          <article className="pricing-card reveal" aria-label="Pro plan">
             <h3>{plans.pro.name}</h3>
             <p className="price">
-              {plans.pro.price} <span>/month</span>
+              {plans.pro.price}{" "}
+              <span>/{plans.pro.priceSuffix ?? "month"}</span>
             </p>
             <p className="price-subtext">{plans.pro.subtext}</p>
             <ul>
@@ -215,11 +220,18 @@ function PricingSection() {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <a className="btn btn-primary btn-full" href={appLinks.signupPro}>
+            {"footnote" in plans.pro && plans.pro.footnote && (
+              <p className="price-subtext">{plans.pro.footnote}</p>
+            )}
+            <a className="btn btn-secondary btn-full" href={appLinks.signupPro}>
               {plans.pro.cta}
             </a>
           </article>
         </div>
+        <p className="price-subtext reveal" style={{ marginTop: "1.5rem", textAlign: "center" }}>
+          After your trial: <strong>{plans.free.name}</strong> — {plans.free.features[0].toLowerCase()},{" "}
+          {plans.free.features[1].toLowerCase()}, {plans.free.features[2].toLowerCase()}.
+        </p>
       </div>
     </section>
   );
@@ -268,11 +280,11 @@ function FinalCtaSection({ basePath }: { basePath: string }) {
       <div className="container cta-banner reveal">
         <div>
           <p className="eyebrow">Ready to simplify invoicing?</p>
-          <h2>Start free today and send your first invoice in minutes.</h2>
+          <h2>Start your 14-day Pro trial and send your first invoice in minutes.</h2>
         </div>
         <div className="cta-actions">
           <a className="btn btn-primary btn-lg" href={appLinks.signup}>
-            Start Free
+            Start 14-day trial
           </a>
           <a className="btn btn-ghost btn-lg" href={`${basePath}#pricing`}>
             View Pricing
