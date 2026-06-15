@@ -75,42 +75,16 @@ function HeroSection({ basePath }: { basePath: string }) {
           </ul>
         </div>
 
-        <div className="hero-mockup reveal" aria-label="InvoiceFast product preview">
-          <div className="mockup-window">
-            <div className="mockup-header">
-              <span className="dot" />
-              <span className="dot" />
-              <span className="dot" />
-              <p>InvoiceFast Dashboard</p>
-            </div>
-            <div className="mockup-body">
-              <div className="mockup-form">
-                <h2>Create Invoice</h2>
-                <label>Client name</label>
-                <div className="field">Mokoena Creative Studio</div>
-                <label>Service item</label>
-                <div className="field">Brand strategy package</div>
-                <label>Amount</label>
-                <div className="field">R4,500.00</div>
-                <div className="status status-success">Ready to export PDF</div>
-              </div>
-              <div className="mockup-preview">
-                <h3>Invoice Preview</h3>
-                <p>INV-2041</p>
-                <p>
-                  Subtotal <strong>R4,500.00</strong>
-                </p>
-                <p>
-                  VAT (15%) <strong>R675.00</strong>
-                </p>
-                <p className="total-row">
-                  Total <strong>R5,175.00</strong>
-                </p>
-                <button className="btn btn-accent mockup-btn" type="button" aria-label="Download PDF">
-                  Download PDF
-                </button>
-              </div>
-            </div>
+        <div className="hero-mockup reveal" aria-label="InvoiceFast live preview">
+          <div className="hero-screenshot">
+            <img
+              src="/invoicefast-live-preview.png"
+              alt="InvoiceFast live invoice preview with line items, VAT-inclusive ZAR totals, and bank payment details on the PDF."
+              width={520}
+              height={696}
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

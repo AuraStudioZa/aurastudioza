@@ -87,7 +87,8 @@ a {
   width: auto;
   height: auto;
   z-index: 1000;
-  background: #fff;
+  background: var(--color-surface);
+  color: var(--color-text);
   border: 2px solid var(--color-primary);
   padding: var(--space-2) var(--space-3);
   border-radius: 8px;
@@ -255,12 +256,24 @@ summary:focus-visible {
 
 .btn-secondary {
   border-color: var(--color-border);
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-text);
 }
 
 .btn-secondary:hover {
   border-color: var(--color-primary-strong);
+  background: var(--color-muted-surface);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--color-muted-surface);
+  border-color: var(--color-primary-strong);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--color-surface);
+  border-color: var(--color-accent);
 }
 
 .btn-ghost {
@@ -353,6 +366,22 @@ h3 {
   overflow: hidden;
 }
 
+.hero-screenshot {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.hero-screenshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 .mockup-header {
   display: flex;
   align-items: center;
@@ -418,6 +447,10 @@ h3 {
   color: #115e59;
 }
 
+[data-theme="dark"] .status-success {
+  color: #5eead4;
+}
+
 .mockup-preview p {
   margin: 0.55rem 0;
 }
@@ -459,7 +492,7 @@ h3 {
 
 .logo-pill {
   background: var(--color-muted-surface);
-  color: #334155;
+  color: var(--color-text-muted);
   border-radius: 999px;
   padding: 0.45rem 0.8rem;
   font-size: 0.85rem;
@@ -509,7 +542,7 @@ h3 {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: #dbeafe;
+  background: var(--color-muted-surface);
   color: var(--color-primary);
   font-weight: 700;
   margin-bottom: 0.8rem;
@@ -538,7 +571,7 @@ h3 {
   top: -12px;
   right: 16px;
   background: var(--color-accent);
-  color: #fff;
+  color: #10182d;
   border-radius: 999px;
   font-size: 0.74rem;
   padding: 0.25rem 0.6rem;
@@ -835,6 +868,10 @@ h3 {
   letter-spacing: 0.03em;
 }
 
+[data-theme="dark"] .product-status {
+  color: #5eead4;
+}
+
 .product-status-soon {
   background: rgba(30, 64, 175, 0.1);
   color: var(--color-primary-strong);
@@ -854,7 +891,7 @@ h3 {
 
 .product-card-soon {
   border-style: dashed;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-muted-surface);
 }
 
 @media (min-width: 768px) {

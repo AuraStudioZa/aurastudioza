@@ -27,7 +27,11 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 
-# Internal notes and runbooks (keep locally; do not publish)
+# Internal notes, planning, and runbooks (keep locally; do not push to GitHub)
 ACCOUNTS.md
 TOMORROW.md
 /docs/
+*PLAYBOOK*.md
+*LAUNCH*PLAN*.md
+PLANNING.md
+**/planning/
