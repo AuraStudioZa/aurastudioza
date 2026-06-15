@@ -3,7 +3,7 @@
  * Run from Website/: node scripts/capture-invoicefast-preview.mjs
  */
 import { chromium } from "playwright";
-import { writeFileSync } from "node:fs";
+import { writeFileSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -259,5 +259,11 @@ const page = await browser.newPage({ viewport: { width: 520, height: 720 } });
 await page.goto(`file:///${tmpHtml.replace(/\\/g, "/")}`, { waitUntil: "networkidle" });
 await page.locator("body").screenshot({ path: outPath, type: "png" });
 await browser.close();
+
+try {
+  unlinkSync(tmpHtml);
+} catch {
+  /* ignore */
+}
 
 console.log(`Wrote ${outPath}`);
