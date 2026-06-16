@@ -93,10 +93,24 @@ export function LogbookMarketingPage() {
               </ul>
             </div>
             <div className="hero-mockup reveal" aria-label="Vehicle Logbook live preview">
-              <div className="hero-screenshot">
+              <p className="hero-preview-label">
+                <span className="hero-preview-pulse" aria-hidden="true" />
+                Live preview
+              </p>
+              <div className="hero-screenshot hero-screenshot-phone">
                 <img
-                  src="/logbook-live-preview.png"
-                  alt="Vehicle Logbook dashboard showing today's stops with business and private km, journey cards, and period summary."
+                  className="logbook-preview logbook-preview-light"
+                  src="/logbook-live-preview-light.png"
+                  alt="Vehicle Logbook dashboard in light mode — period stats and today's business and private stops."
+                  width={390}
+                  height={844}
+                  loading="eager"
+                  decoding="async"
+                />
+                <img
+                  className="logbook-preview logbook-preview-dark"
+                  src="/logbook-live-preview-dark.png"
+                  alt="Vehicle Logbook dashboard in dark mode — period stats and today's business and private stops."
                   width={390}
                   height={844}
                   loading="eager"

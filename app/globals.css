@@ -358,6 +358,12 @@ h3 {
   gap: var(--space-1);
 }
 
+.hero-mockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero-mockup .mockup-window {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -380,6 +386,49 @@ h3 {
   width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+.hero-preview-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.hero-preview-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+}
+
+.hero-screenshot-phone {
+  max-width: 300px;
+  margin-inline: auto;
+  border-radius: 1.35rem;
+  box-shadow:
+    var(--shadow-soft),
+    0 24px 48px -20px rgba(15, 23, 42, 0.35);
+}
+
+.hero-screenshot-phone img {
+  border-radius: 1.35rem;
+}
+
+.logbook-preview-dark {
+  display: none;
+}
+
+[data-theme="dark"] .logbook-preview-light {
+  display: none;
+}
+
+[data-theme="dark"] .logbook-preview-dark {
+  display: block;
 }
 
 .mockup-header {
@@ -821,6 +870,50 @@ h3 {
 
 .bento-invoicefast {
   min-height: 320px;
+  border-color: rgba(201, 162, 39, 0.28);
+  background: linear-gradient(
+    135deg,
+    rgba(201, 162, 39, 0.09) 0%,
+    var(--glass-bg) 58%
+  );
+}
+
+.bento-logbook {
+  min-height: 320px;
+  border-color: rgba(13, 148, 136, 0.32);
+  background: linear-gradient(
+    135deg,
+    rgba(13, 148, 136, 0.1) 0%,
+    var(--glass-bg) 58%
+  );
+}
+
+.bento-logbook .product-status {
+  background: rgba(13, 148, 136, 0.14);
+  color: #0f766e;
+}
+
+[data-theme="dark"] .bento-invoicefast {
+  border-color: rgba(212, 175, 55, 0.22);
+  background: linear-gradient(
+    135deg,
+    rgba(201, 162, 39, 0.1) 0%,
+    var(--glass-bg) 58%
+  );
+}
+
+[data-theme="dark"] .bento-logbook {
+  border-color: rgba(45, 212, 191, 0.22);
+  background: linear-gradient(
+    135deg,
+    rgba(13, 148, 136, 0.14) 0%,
+    var(--glass-bg) 58%
+  );
+}
+
+[data-theme="dark"] .bento-logbook .product-status {
+  background: rgba(45, 212, 191, 0.14);
+  color: #5eead4;
 }
 
 .section-lead {
@@ -903,11 +996,16 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "invoicefast invoicefast"
+      "logbook logbook"
       "soon about";
   }
 
   .bento-invoicefast {
     grid-area: invoicefast;
+  }
+
+  .bento-logbook {
+    grid-area: logbook;
   }
 
   .bento-soon {
@@ -927,8 +1025,8 @@ h3 {
   .bento-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas:
-      "invoicefast invoicefast soon"
-      "invoicefast invoicefast about";
+      "invoicefast logbook soon"
+      "invoicefast logbook about";
   }
 }
 
