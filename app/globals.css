@@ -419,15 +419,15 @@ h3 {
   border-radius: 1.35rem;
 }
 
-.logbook-preview-dark {
+.hero-screenshot-phone .logbook-preview-dark {
   display: none;
 }
 
-[data-theme="dark"] .logbook-preview-light {
+[data-theme="dark"] .hero-screenshot-phone .logbook-preview-light {
   display: none;
 }
 
-[data-theme="dark"] .logbook-preview-dark {
+[data-theme="dark"] .hero-screenshot-phone .logbook-preview-dark {
   display: block;
 }
 
