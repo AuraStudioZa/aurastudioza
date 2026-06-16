@@ -21,6 +21,9 @@ function StudioHeader() {
               <a href={siteLinks.invoicefast}>InvoiceFast</a>
             </li>
             <li>
+              <a href={siteLinks.logbook}>Vehicle Logbook</a>
+            </li>
+            <li>
               <a href="#about">About</a>
             </li>
           </ul>
@@ -55,7 +58,9 @@ export function StudioHomePage() {
     return () => observer.disconnect();
   }, []);
 
-  const invoiceFast = products[0];
+  const invoiceFast = products.find((p) => p.slug === "invoicefast");
+  const logbook = products.find((p) => p.slug === "logbook");
+  const liveProducts = [invoiceFast, logbook].filter(Boolean);
 
   return (
     <>
@@ -85,25 +90,32 @@ export function StudioHomePage() {
               <p className="eyebrow">Products</p>
               <h2 className="display-heading display-heading-sm">Tools from AuraStudioZa</h2>
               <p className="section-lead">
-                Start with InvoiceFast today. More products will join the studio over time.
+                InvoiceFast and Vehicle Logbook are live. More studio tools will join over time.
               </p>
             </div>
 
             <div className="bento-grid">
-              <article className="bento-card bento-invoicefast glass-panel reveal">
-                <p className="product-status">Live</p>
-                <h3 className="display-heading display-heading-sm">{invoiceFast.name}</h3>
-                <p className="product-tagline">{invoiceFast.tagline}</p>
-                <p>{invoiceFast.description}</p>
-                <ul className="product-highlights">
-                  {invoiceFast.highlights.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <a className="btn btn-primary" href={invoiceFast.href}>
-                  View {invoiceFast.name}
-                </a>
-              </article>
+              {liveProducts.map((product) => (
+                <article
+                  key={product.slug}
+                  className={`bento-card glass-panel reveal ${
+                    product.slug === "invoicefast" ? "bento-invoicefast" : "bento-logbook"
+                  }`}
+                >
+                  <p className="product-status">{product.status}</p>
+                  <h3 className="display-heading display-heading-sm">{product.name}</h3>
+                  <p className="product-tagline">{product.tagline}</p>
+                  <p>{product.description}</p>
+                  <ul className="product-highlights">
+                    {product.highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <a className="btn btn-primary" href={product.href}>
+                    View {product.name}
+                  </a>
+                </article>
+              ))}
 
               <article className="bento-card bento-soon glass-panel reveal" aria-label="More products coming">
                 <p className="product-status product-status-soon">Coming later</p>
@@ -117,7 +129,7 @@ export function StudioHomePage() {
                 <h3 className="display-heading display-heading-sm">Built in South Africa</h3>
                 <p>
                   A solo-founder studio focused on clean UX, trustworthy workflows, and software
-                  that solves real business problems—starting with invoicing through InvoiceFast.
+                  that solves real business problems—starting with InvoiceFast and Vehicle Logbook.
                 </p>
               </article>
             </div>
