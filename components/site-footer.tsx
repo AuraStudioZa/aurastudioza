@@ -27,6 +27,9 @@ export function SiteFooter({
               <a href={siteLinks.invoicefast}>InvoiceFast</a>
             </li>
             <li>
+              <a href={siteLinks.logbook}>Vehicle Logbook</a>
+            </li>
+            <li>
               <a href={siteLinks.contact}>Contact</a>
             </li>
             <li>

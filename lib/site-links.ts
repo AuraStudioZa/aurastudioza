@@ -12,6 +12,7 @@ export const appLinks = {
 export const siteLinks = {
   home: "/",
   invoicefast: "/invoicefast",
+  logbook: "/logbook",
   /** Canonical InvoiceFast legal pages (app subdomain). */
   privacy: appLinks.privacy,
   terms: appLinks.terms,
