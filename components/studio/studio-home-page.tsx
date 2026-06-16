@@ -58,9 +58,9 @@ export function StudioHomePage() {
     return () => observer.disconnect();
   }, []);
 
-  const invoiceFast = products.find((p) => p.slug === "invoicefast");
-  const logbook = products.find((p) => p.slug === "logbook");
-  const liveProducts = [invoiceFast, logbook].filter(Boolean);
+  const liveProducts = products.filter(
+    (p) => p.slug === "invoicefast" || p.slug === "logbook"
+  );
 
   return (
     <>
