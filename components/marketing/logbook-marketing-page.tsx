@@ -92,12 +92,16 @@ export function LogbookMarketingPage() {
                 <li>R89/month incl. VAT after trial</li>
               </ul>
             </div>
-            <div className="hero-mockup reveal" aria-label="Vehicle Logbook preview">
-              <div className="hero-screenshot logbook-hero-placeholder">
-                <p className="logbook-hero-card-title">Vehicle Logbook</p>
-                <p className="muted">Log a stop · Business 62% · Export May 2026</p>
-                <p className="logbook-hero-card-line">Office → Client · 28 km business</p>
-                <p className="logbook-hero-card-line">Client → Home · 20 km private</p>
+            <div className="hero-mockup reveal" aria-label="Vehicle Logbook live preview">
+              <div className="hero-screenshot">
+                <img
+                  src="/logbook-live-preview.png"
+                  alt="Vehicle Logbook dashboard showing today's stops with business and private km, journey cards, and period summary."
+                  width={390}
+                  height={844}
+                  loading="eager"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
