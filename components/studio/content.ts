@@ -20,3 +20,16 @@ export const products = [
     highlights: ["1 month free trial", "R89/mo incl. VAT", "Mar–Feb tax year"],
   },
 ];
+
+export const freeTools = [
+  {
+    slug: "email-signature",
+    name: "Email Signature Generator",
+    tagline: "Professional HTML signatures for Gmail, Outlook, and Spacemail.",
+    description:
+      "Nine templates, optional logo upload, and one-click rich copy — no account required.",
+    status: "Free" as const,
+    href: "/email-signature",
+    highlights: ["No sign-up", "Rich HTML copy", "InvoiceFast line optional"],
+  },
+];

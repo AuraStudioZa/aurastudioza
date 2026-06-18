@@ -5,7 +5,7 @@ import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
 import { ThemeToggle } from "../theme-toggle";
 import { siteLinks } from "../../lib/site-links";
-import { products } from "./content";
+import { freeTools, products } from "./content";
 
 function StudioHeader() {
   return (
@@ -16,6 +16,9 @@ function StudioHeader() {
           <ul className="nav-links">
             <li>
               <a href="#products">Products</a>
+            </li>
+            <li>
+              <a href="#free-tools">Free tools</a>
             </li>
             <li>
               <a href={siteLinks.invoicefast}>InvoiceFast</a>
@@ -132,6 +135,40 @@ export function StudioHomePage() {
                   that solves real business problems—starting with InvoiceFast and Vehicle Logbook.
                 </p>
               </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="free-tools" className="section">
+          <div className="container">
+            <div className="section-heading reveal">
+              <p className="eyebrow">Free tools</p>
+              <h2 className="display-heading display-heading-sm">Useful utilities, no sign-up</h2>
+              <p className="section-lead">
+                Small helpers from AuraStudioZa — free to use in your browser. More will appear here
+                as we ship them.
+              </p>
+            </div>
+            <div className="free-tools-grid">
+              {freeTools.map((tool) => (
+                <article
+                  key={tool.slug}
+                  className="bento-card glass-panel reveal bento-free-tool"
+                >
+                  <p className="product-status product-status-free">{tool.status}</p>
+                  <h3 className="display-heading display-heading-sm">{tool.name}</h3>
+                  <p className="product-tagline">{tool.tagline}</p>
+                  <p>{tool.description}</p>
+                  <ul className="product-highlights">
+                    {tool.highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <a className="btn btn-secondary" href={tool.href}>
+                    Open {tool.name}
+                  </a>
+                </article>
+              ))}
             </div>
           </div>
         </section>
