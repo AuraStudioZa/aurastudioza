@@ -35,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.4,
     },
     {
+      url: "https://aurastudioza.com/email-signature",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+    {
       url: "https://aurastudioza.com/contact",
       lastModified,
       changeFrequency: "monthly",
