@@ -6,6 +6,12 @@ export const metadata = pageMetadata({
   title: "Contact",
   description: "Contact AuraStudioZa for support, billing, and general enquiries.",
   path: "/contact",
+  keywords: [
+    "AuraStudioZa contact",
+    "InvoiceFast support",
+    "freelancer software support South Africa",
+    "AuraStudioZa support email",
+  ],
 });
 
 export default function ContactPage() {

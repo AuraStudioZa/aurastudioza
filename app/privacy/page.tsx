@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
   title: "Privacy Policy",
   description: "InvoiceFast Privacy Policy on app.aurastudioza.com.",
   path: "/privacy",
+  keywords: ["InvoiceFast privacy policy", "AuraStudioZa privacy", "POPIA"],
 });
 
 /** Canonical policy lives on the app — one source of truth. */

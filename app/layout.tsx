@@ -44,13 +44,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [brandOpenGraphImage.url],
   },
-  keywords: [
-    "AuraStudioZa",
-    "freelancer software South Africa",
-    "small business tools",
-    "InvoiceFast",
-    "invoice generator",
-  ],
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? {
         verification: {
