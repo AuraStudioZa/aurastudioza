@@ -1005,6 +1005,24 @@ h3 {
   max-width: 42rem;
 }
 
+.btn-free-tool {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 22px rgba(13, 148, 136, 0.35);
+}
+
+.btn-free-tool:hover {
+  filter: brightness(1.08);
+  border-color: transparent;
+}
+
+[data-theme="dark"] .btn-free-tool {
+  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+  color: #042f2e;
+  box-shadow: 0 8px 22px rgba(45, 212, 191, 0.25);
+}
+
 .product-tagline {
   font-weight: 600;
   color: var(--color-text);
@@ -1185,6 +1203,22 @@ h3 {
   padding-top: 0;
 }
 
+.sig-template-picker {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+}
+
+@media (min-width: 960px) {
+  .sig-template-picker {
+    position: sticky;
+    top: 4.75rem;
+    z-index: 30;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 8px 16px -12px rgba(15, 22, 40, 0.35);
+  }
+}
+
 .sig-template-group + .sig-template-group {
   margin-top: var(--space-3);
 }
@@ -1259,9 +1293,58 @@ h3 {
   align-items: start;
 }
 
+@media (max-width: 959px) {
+  .sig-builder-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sig-preview-wrap {
+    order: -1;
+    position: sticky;
+    top: 4.75rem;
+    z-index: 25;
+    padding-block: var(--space-2);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 8px 16px -12px rgba(15, 22, 40, 0.35);
+  }
+
+  .sig-email-frame {
+    min-height: 120px;
+    max-height: min(240px, 38vh);
+    overflow-y: auto;
+  }
+
+  .sig-form .sig-input:focus,
+  .sig-form .sig-color-input:focus {
+    scroll-margin-top: 7rem;
+  }
+}
+
 @media (min-width: 960px) {
   .sig-builder-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .sig-form.card {
+    max-height: calc(100dvh - 6.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .sig-preview-wrap {
+    position: sticky;
+    top: 5.75rem;
+    align-self: start;
+    max-height: calc(100dvh - 6.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .sig-form .sig-input:focus,
+  .sig-form .sig-color-input:focus {
+    scroll-margin-top: 6.5rem;
   }
 }
 
@@ -1432,6 +1515,10 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+
+.sig-preview-wrap .sig-hint:last-child {
+  margin-bottom: 0;
 }
 
 .sig-preview-header {

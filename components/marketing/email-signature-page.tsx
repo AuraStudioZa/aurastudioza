@@ -53,7 +53,7 @@ const initialForm: FormState = {
   studioImageMode: defaultSignatureFields.studioImageMode,
   linkedIn: defaultSignatureFields.linkedIn,
   instagram: defaultSignatureFields.instagram,
-  behance: defaultSignatureFields.behance,
+  facebook: defaultSignatureFields.facebook,
   includeInvoiceFastLine: true,
 };
 
@@ -280,6 +280,7 @@ export function EmailSignaturePage() {
 
         <section className="section sig-builder-section">
           <div className="container">
+            <div className="sig-template-picker">
             {templateGroups.map((group) => (
               <div key={group.id} className="sig-template-group reveal">
                 <p className="sig-template-group-label">{group.label}</p>
@@ -293,6 +294,7 @@ export function EmailSignaturePage() {
                         role="tab"
                         aria-selected={template === option.id}
                         className={`sig-template-tab${template === option.id ? " active" : ""}`}
+                        onMouseDown={(e) => e.preventDefault()}
                         onClick={() => setTemplate(option.id)}
                       >
                         <span className="sig-template-tab-label">{option.label}</span>
@@ -302,8 +304,9 @@ export function EmailSignaturePage() {
                 </div>
               </div>
             ))}
+            </div>
 
-            <div className="sig-builder-grid reveal">
+            <div className="sig-builder-grid">
               <div className="sig-form card">
                 <div className="sig-form-head">
                   <h2 className="sig-panel-title">Your details</h2>
@@ -458,9 +461,10 @@ export function EmailSignaturePage() {
                                   key={mode}
                                   type="button"
                                   className={`sig-toggle-btn${form.studioImageMode === mode ? " active" : ""}`}
+                                  onMouseDown={(e) => e.preventDefault()}
                                   onClick={() => updateField(setForm, "studioImageMode", mode)}
                                 >
-                                  {mode === "headshot" ? "Headshot" : "Logo"}
+                                  {mode === "headshot" ? "Photo" : "Logo"}
                                 </button>
                               ))}
                             </div>
@@ -469,7 +473,7 @@ export function EmailSignaturePage() {
 
                         <label className="sig-label" htmlFor="sig-image-upload">
                           {fieldConfig.imageUsesHeadshotMode && form.studioImageMode === "headshot"
-                            ? "Headshot (optional)"
+                            ? "Photo (optional)"
                             : "Logo (optional)"}
                         </label>
                         <div className="sig-upload-row">
@@ -544,16 +548,16 @@ export function EmailSignaturePage() {
                       onChange={(e) => updateField(setForm, "instagram", e.target.value)}
                       placeholder="https://instagram.com/you"
                     />
-                    <label className="sig-label" htmlFor="sig-behance">
-                      Behance
+                    <label className="sig-label" htmlFor="sig-facebook">
+                      Facebook
                     </label>
                     <input
-                      id="sig-behance"
+                      id="sig-facebook"
                       className="sig-input"
                       type="url"
-                      value={form.behance}
-                      onChange={(e) => updateField(setForm, "behance", e.target.value)}
-                      placeholder="https://behance.net/you"
+                      value={form.facebook}
+                      onChange={(e) => updateField(setForm, "facebook", e.target.value)}
+                      placeholder="https://facebook.com/yourpage"
                     />
                   </fieldset>
                 ) : null}

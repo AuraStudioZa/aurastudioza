@@ -43,7 +43,7 @@ export const templateOptions: TemplateOption[] = [
   {
     id: "studio",
     label: "Studio",
-    description: "Portfolio CTA, socials, headshot or logo.",
+    description: "Portfolio CTA, socials, photo or logo.",
     group: "creative",
   },
   {

@@ -164,7 +164,7 @@ export function StudioHomePage() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <a className="btn btn-secondary" href={tool.href}>
+                  <a className="btn btn-free-tool" href={tool.href}>
                     Open {tool.name}
                   </a>
                 </article>

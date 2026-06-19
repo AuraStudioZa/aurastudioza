@@ -18,7 +18,7 @@ export type SignatureDraftForm = {
   studioImageMode: StudioImageMode;
   linkedIn: string;
   instagram: string;
-  behance: string;
+  facebook: string;
   includeInvoiceFastLine: boolean;
 };
 
@@ -62,7 +62,7 @@ function parseDraft(raw: string): SignatureDraft | null {
         studioImageMode: form.studioImageMode,
         linkedIn: String(form.linkedIn ?? ""),
         instagram: String(form.instagram ?? ""),
-        behance: String(form.behance ?? ""),
+        facebook: String(form.facebook ?? (form as { behance?: string }).behance ?? ""),
         includeInvoiceFastLine: Boolean(form.includeInvoiceFastLine),
       },
       uploadedFileName:
@@ -131,6 +131,6 @@ export function draftHasContent(form: SignatureDraftForm): boolean {
       form.imageUrl.trim() ||
       form.linkedIn.trim() ||
       form.instagram.trim() ||
-      form.behance.trim()
+      form.facebook.trim()
   );
 }

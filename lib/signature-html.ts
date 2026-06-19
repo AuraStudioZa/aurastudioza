@@ -15,7 +15,7 @@ export type SignatureFields = {
   studioImageMode: StudioImageMode;
   linkedIn: string;
   instagram: string;
-  behance: string;
+  facebook: string;
   includeInvoiceFastLine: boolean;
   invoiceFastUrl: string;
 };
@@ -37,7 +37,7 @@ export const defaultSignatureFields: SignatureFields = {
   studioImageMode: "headshot",
   linkedIn: "",
   instagram: "",
-  behance: "",
+  facebook: "",
   includeInvoiceFastLine: true,
   invoiceFastUrl: "https://app.aurastudioza.com/sign-up",
 };
@@ -228,8 +228,8 @@ function socialRow(fields: SignatureFields, linkColor: string): string {
   const instagram = normalizeUrl(fields.instagram);
   if (instagram) links.push({ label: "Instagram", url: instagram });
 
-  const behance = normalizeUrl(fields.behance);
-  if (behance) links.push({ label: "Behance", url: behance });
+  const facebook = normalizeUrl(fields.facebook);
+  if (facebook) links.push({ label: "Facebook", url: facebook });
 
   if (links.length === 0) return "";
 
@@ -254,7 +254,9 @@ function buildProfessional(fields: SignatureFields): string {
 
   return (
     `<table cellpadding="0" cellspacing="0" border="0" style="font-family:${FONT};max-width:400px;">` +
-    (imageUrl ? imageBlock(imageUrl, "logo", fields.company.trim() || displayName(fields)) : "") +
+    (imageUrl
+      ? imageBlock(imageUrl, fields.studioImageMode, fields.company.trim() || displayName(fields))
+      : "") +
     `<tr><td style="padding:0 0 10px;"><hr style="border:none;border-top:2px solid ${color};margin:0;" /></td></tr>` +
     `<tr><td style="padding:0 0 2px;font-family:${FONT};font-size:16px;font-weight:700;color:${color};letter-spacing:-0.2px;">${name}</td></tr>` +
     (role
@@ -295,7 +297,9 @@ function buildBold(fields: SignatureFields): string {
     `<td width="6" style="background-color:${color};font-size:0;line-height:0;">&nbsp;</td>` +
     `<td style="padding:0 0 0 14px;font-family:${FONT};">` +
     `<table cellpadding="0" cellspacing="0" border="0">` +
-    (imageUrl ? imageBlock(imageUrl, "logo", fields.company.trim() || displayName(fields)) : "") +
+    (imageUrl
+      ? imageBlock(imageUrl, fields.studioImageMode, fields.company.trim() || displayName(fields))
+      : "") +
     `<tr><td style="padding:0 0 4px;font-family:${FONT};font-size:20px;font-weight:700;color:${color};line-height:1.2;">${name}</td></tr>` +
     (role
       ? `<tr><td style="padding:0 0 6px;font-family:${FONT};font-size:12px;color:${MUTED};font-weight:600;">${escapeHtml(role)}</td></tr>`
@@ -386,9 +390,7 @@ function buildLuxe(fields: SignatureFields): string {
   const DARK = "#0f1628";
 
   const logoRow = imageUrl
-    ? `<tr><td style="padding:0 0 12px;font-family:${FONT};">` +
-      `<img src="${escapeHtml(imageUrl)}" width="120" alt="${escapeHtml(fields.company.trim() || displayName(fields))}" style="display:block;border:0;max-width:140px;height:auto;" />` +
-      `</td></tr>`
+    ? imageBlock(imageUrl, fields.studioImageMode, fields.company.trim() || displayName(fields))
     : "";
 
   const socialOnDark = socialRow(fields, color);
@@ -446,12 +448,15 @@ function buildBanner(fields: SignatureFields): string {
   const role = roleLine(fields);
   const imageUrl = normalizeImageUrl(fields.imageUrl);
 
-  const bannerImg = imageUrl
-    ? `<tr><td style="padding:0 0 10px;font-family:${FONT};">` +
-      `<img src="${escapeHtml(imageUrl)}" width="280" alt="${escapeHtml(fields.company.trim() || displayName(fields))}" ` +
-      `style="display:block;border:0;max-width:300px;height:auto;" />` +
-      `</td></tr>`
-    : "";
+  const bannerImg =
+    imageUrl && fields.studioImageMode === "logo"
+      ? `<tr><td style="padding:0 0 10px;font-family:${FONT};">` +
+        `<img src="${escapeHtml(imageUrl)}" width="280" alt="${escapeHtml(fields.company.trim() || displayName(fields))}" ` +
+        `style="display:block;border:0;max-width:300px;height:auto;" />` +
+        `</td></tr>`
+      : imageUrl
+        ? imageBlock(imageUrl, "headshot", displayName(fields))
+        : "";
 
   return (
     `<table cellpadding="0" cellspacing="0" border="0" style="font-family:${FONT};max-width:400px;">` +
@@ -533,7 +538,7 @@ export function buildSignaturePlainText(template: SignatureTemplate, fields: Sig
   const website = normalizeUrl(fields.website);
   if (website) lines.push(website);
 
-  const socials = [fields.linkedIn, fields.instagram, fields.behance]
+  const socials = [fields.linkedIn, fields.instagram, fields.facebook]
     .map((url) => normalizeUrl(url))
     .filter(Boolean) as string[];
   if (socials.length) lines.push(...socials);
