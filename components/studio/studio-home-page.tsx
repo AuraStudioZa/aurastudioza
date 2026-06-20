@@ -126,15 +126,19 @@ export function StudioHomePage() {
                 <p className="product-tagline">New tools for creators and small teams.</p>
                 <p>Future AuraStudioZa products will appear here as they launch.</p>
               </article>
+            </div>
+          </div>
+        </section>
 
-              <article id="about" className="bento-card bento-about glass-panel reveal">
-                <p className="eyebrow">About</p>
-                <h3 className="display-heading display-heading-sm">Built in South Africa</h3>
-                <p>
-                  A solo-founder studio focused on clean UX, trustworthy workflows, and software
-                  that solves real business problems—starting with InvoiceFast and Vehicle Logbook.
-                </p>
-              </article>
+        <section id="about" className="section about-section">
+          <div className="container">
+            <div className="about-block reveal glass-panel">
+              <p className="eyebrow">About</p>
+              <h2 className="display-heading display-heading-sm">Built in South Africa</h2>
+              <p>
+                A solo-founder studio focused on clean UX, trustworthy workflows, and software
+                that solves real business problems—starting with InvoiceFast and Vehicle Logbook.
+              </p>
             </div>
           </div>
         </section>

@@ -162,12 +162,13 @@ export function LogbookMarketingPage() {
               <p className="eyebrow">Pricing</p>
               <h2>Try a full month free</h2>
             </div>
-            <div className="pricing-grid" style={{ maxWidth: "28rem", margin: "0 auto" }}>
+            <div className="pricing-grid logbook-pricing-grid">
               <article className="pricing-card pricing-card-pro reveal">
                 <p className="plan-badge">Trial</p>
                 <h3>1 calendar month</h3>
-                <p className="price">
-                  Free <span>· no card in app</span>
+                <p className="price-line">
+                  <span className="price-amount">Free</span>
+                  <span className="price-detail">No card in app</span>
                 </p>
                 <p className="price-subtext">Full export access during trial</p>
                 <ul>
@@ -181,8 +182,9 @@ export function LogbookMarketingPage() {
               </article>
               <article className="pricing-card reveal">
                 <h3>After trial</h3>
-                <p className="price">
-                  R89 <span>/month incl. VAT</span>
+                <p className="price-line">
+                  <span className="price-amount">R89</span>
+                  <span className="price-detail">/month incl. VAT</span>
                 </p>
                 <p className="price-subtext">Subscribe in app when trial ends</p>
                 <ul>
