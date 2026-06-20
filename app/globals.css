@@ -1465,6 +1465,21 @@ h3 {
   padding-bottom: var(--space-3);
 }
 
+@media (min-width: 960px) {
+  /* Free tools: page scroll only — avoid nested scroll traps in the input column. */
+  .tool-page-main .sig-form.card {
+    max-height: none;
+    overflow-y: visible;
+    overscroll-behavior: auto;
+  }
+
+  .tool-page-main .sig-preview-wrap {
+    max-height: none;
+    overflow-y: visible;
+    overscroll-behavior: auto;
+  }
+}
+
 .tool-page-faq {
   padding-top: var(--space-4);
   padding-bottom: var(--space-5);
@@ -1698,7 +1713,7 @@ h3 {
   .sig-form.card {
     max-height: calc(100dvh - 6.5rem);
     overflow-y: auto;
-    overscroll-behavior: contain;
+    overscroll-behavior: auto;
   }
 
   .sig-preview-wrap {
@@ -1707,7 +1722,7 @@ h3 {
     align-self: start;
     max-height: calc(100dvh - 6.5rem);
     overflow-y: auto;
-    overscroll-behavior: contain;
+    overscroll-behavior: auto;
   }
 
   .sig-form .sig-input:focus,
