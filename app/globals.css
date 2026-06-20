@@ -2074,6 +2074,19 @@ h3 {
   position: relative;
 }
 
+.vat-country-select {
+  margin-bottom: var(--space-3);
+}
+
+.vat-country-search-label {
+  margin-top: 0;
+}
+
+.sig-label-optional {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
 .vat-country-list-wrap {
   position: absolute;
   z-index: 40;

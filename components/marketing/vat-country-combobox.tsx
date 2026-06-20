@@ -6,7 +6,7 @@ import {
   highlightMatch,
   searchJurisdictions,
 } from "../../lib/vat-country-detect";
-import { getJurisdiction } from "../../lib/vat-jurisdictions";
+import { getJurisdiction, jurisdictionsByRegion, VAT_JURISDICTION_REGIONS } from "../../lib/vat-jurisdictions";
 
 type VatCountryComboboxProps = {
   jurisdictionId: string;
@@ -158,15 +158,43 @@ export function VatCountryCombobox({
   const showList = searching && results.length > 0;
   const displayValue = searching ? query : formatJurisdictionOption(selected);
   const listHeading = query.trim() ? `${results.length} matches` : "Suggestions";
+  const selectId = `${listId}-select`;
+  const inputId = `${listId}-input`;
+
+  function onSelectChange(id: string) {
+    setSearching(false);
+    setQuery("");
+    onSelect(id);
+  }
 
   return (
     <div className="vat-country-combobox" ref={rootRef}>
-      <label className="sig-label" htmlFor={`${listId}-input`}>
+      <label className="sig-label" htmlFor={selectId}>
         Country / region
+      </label>
+      <select
+        id={selectId}
+        className="sig-input sig-select vat-country-select"
+        value={jurisdictionId}
+        onChange={(e) => onSelectChange(e.target.value)}
+      >
+        {VAT_JURISDICTION_REGIONS.map((region) => (
+          <optgroup key={region} label={region}>
+            {jurisdictionsByRegion(region).map((item) => (
+              <option key={item.id} value={item.id}>
+                {formatJurisdictionOption(item)}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+
+      <label className="sig-label vat-country-search-label" htmlFor={inputId}>
+        Search countries <span className="sig-label-optional">(optional)</span>
       </label>
       <input
         ref={inputRef}
-        id={`${listId}-input`}
+        id={inputId}
         className="sig-input"
         type="text"
         role="combobox"
@@ -175,7 +203,7 @@ export function VatCountryCombobox({
         aria-autocomplete="list"
         autoComplete="off"
         spellCheck={false}
-        placeholder="Start typing a country…"
+        placeholder="Type to filter — UK, ZAR, Germany…"
         value={displayValue}
         onChange={(e) => {
           setQuery(e.target.value);
@@ -238,8 +266,8 @@ export function VatCountryCombobox({
       ) : null}
       {!searching ? (
         <p className="sig-hint">
-          Click the field and type — suggestions appear as you go. Currency and rate update on
-          selection.
+          Use the dropdown for a quick pick, or search to jump to a country. Currency and rate
+          update on selection.
         </p>
       ) : null}
     </div>
