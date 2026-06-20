@@ -14,11 +14,11 @@ export function BrandLogo({ href = "/", variant = "compact" }: BrandLogoProps) {
   );
 
   if (href === null) {
-    return <span className="brand brand-logo">{mark}</span>;
+    return <span className="brand brand-logo brand-logo-alive">{mark}</span>;
   }
 
   return (
-    <a href={href} className="brand brand-logo" aria-label="AuraStudioZa Home">
+    <a href={href} className="brand brand-logo brand-logo-alive" aria-label="AuraStudioZa Home">
       {mark}
     </a>
   );
