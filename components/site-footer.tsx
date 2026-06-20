@@ -33,6 +33,12 @@ export function SiteFooter({
               <a href={`${siteLinks.home}#free-tools`}>Free tools</a>
             </li>
             <li>
+              <a href={siteLinks.emailSignature}>Email signature</a>
+            </li>
+            <li>
+              <a href={siteLinks.vatCalculator}>VAT calculator</a>
+            </li>
+            <li>
               <a href={siteLinks.contact}>Contact</a>
             </li>
             <li>

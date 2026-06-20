@@ -65,20 +65,24 @@ export function pageMetadata({
 export const homePageMetadata: Metadata = {
   title: "AuraStudioZa — Practical Software for Freelancers and Small Business",
   description:
-    "AuraStudioZa builds focused tools for South African freelancers and small businesses — InvoiceFast invoicing, Vehicle Logbook mileage tracking, and free tools like our email signature generator.",
+    "AuraStudioZa builds focused tools for South African freelancers and small businesses — InvoiceFast invoicing, Vehicle Logbook mileage tracking, VAT calculator, email signature generator, and more.",
   keywords: [
     "AuraStudioZa",
     "freelancer software South Africa",
     "small business tools",
     "InvoiceFast",
-    "invoice generator",
+    "invoice generator South Africa",
+    "VAT calculator South Africa",
+    "email signature generator",
     "vehicle logbook South Africa",
+    "SARS mileage logbook",
+    "ZAR invoice software",
   ],
   alternates: { canonical: siteUrl },
   openGraph: {
     title: "AuraStudioZa — Freelancer & Small Business Software South Africa",
     description:
-      "InvoiceFast, Vehicle Logbook, and free tools for freelancers and small businesses in South Africa.",
+      "InvoiceFast, Vehicle Logbook, VAT calculator, email signature generator, and free tools for freelancers in South Africa.",
     url: siteUrl,
     siteName: "AuraStudioZa",
     type: "website",
@@ -88,7 +92,7 @@ export const homePageMetadata: Metadata = {
     card: "summary_large_image",
     title: "AuraStudioZa — Freelancer & Small Business Software South Africa",
     description:
-      "InvoiceFast, Vehicle Logbook, and free tools for freelancers and small businesses in South Africa.",
+      "InvoiceFast, Vehicle Logbook, VAT calculator, email signature generator, and free tools for freelancers in South Africa.",
     images: [brandOpenGraphImage.url],
   },
 };

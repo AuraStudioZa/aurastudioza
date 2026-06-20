@@ -1,20 +1,61 @@
 :root {
-  --color-bg: #f4f6fb;
+  --color-bg: #dce4ff;
   --color-surface: #ffffff;
-  --color-muted-surface: #e9edf5;
-  --color-text: #121a33;
-  --color-text-muted: #4a5578;
-  --color-primary: #1e2a5a;
-  --color-primary-strong: #2f3f7a;
-  --color-accent: #c9a227;
-  --color-accent-strong: #e8c547;
-  --color-border: #c9d2e3;
-  --shadow-soft: 0 12px 34px rgba(18, 26, 51, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(201, 162, 39, 0.22);
-  --logo-studio-fill: #1e2a5a;
-  --logo-tagline-fill: #4a5578;
-  --hero-glow: rgba(91, 108, 255, 0.14);
+  --color-muted-surface: #b8c9f5;
+  --color-text: #0c1447;
+  --color-text-muted: #334155;
+  --color-primary: #0c1447;
+  --color-primary-strong: #1e3a8a;
+  --color-accent: #ffb300;
+  --color-accent-strong: #ffcc00;
+  --color-border: #94a3b8;
+  --shadow-soft: 0 16px 40px rgba(12, 20, 71, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(30, 58, 138, 0.28);
+  --logo-studio-fill: #0c1447;
+  --logo-tagline-fill: #334155;
+  --logo-gold-start: #ffe566;
+  --logo-gold-end: #ffb300;
+  --logo-crystal-left-start: #1e3a8a;
+  --logo-crystal-left-end: #0c1447;
+  --logo-crystal-right-start: #ffcc00;
+  --logo-crystal-right-mid: #ffb300;
+  --logo-crystal-right-end: #1e3a8a;
+  --logo-crystal-top-start: #fff8dc;
+  --logo-crystal-top-end: #2563eb;
+  --logo-crystal-aura-start: #3b82f6;
+  --logo-crystal-aura-mid: #ffb300;
+  --logo-crystal-aura-end: #ffcc00;
+  --logo-crystal-edge-start: #ffb300;
+  --logo-crystal-edge-end: #fff3c4;
+  --logo-crystal-silhouette: #0c1447;
+  --logo-crystal-ground: #1e3a8a;
+  --logo-crystal-accent-left: #2563eb;
+  --logo-crystal-accent-right: #b8860b;
+  --logo-crystal-drop-shadow: #0c1447;
+  --hero-glow: rgba(30, 58, 138, 0.32);
+  --body-glow-secondary: rgba(255, 179, 0, 0.24);
+  --palette-body-extra: radial-gradient(
+    circle at 50% 105%,
+    rgba(30, 58, 138, 0.12) 0,
+    transparent 42%
+  );
+  --bento-invoicefast-tint: rgba(255, 179, 0, 0.32);
+  --bento-invoicefast-border: rgba(255, 140, 0, 0.55);
+  --bento-logbook-tint: rgba(30, 58, 138, 0.24);
+  --bento-logbook-border: rgba(30, 64, 138, 0.48);
+  --bento-logbook-status-bg: rgba(30, 58, 138, 0.18);
+  --bento-logbook-status-text: #1e40af;
+  --bento-free-tint: rgba(30, 58, 138, 0.1);
+  --bento-free-border: rgba(255, 179, 0, 0.32);
+  --btn-free-tool-bg: linear-gradient(135deg, #1e3a8a, #3b5998);
+  --btn-free-tool-color: #fff;
+  --btn-free-tool-shadow: 0 10px 28px rgba(30, 58, 138, 0.32);
+  --btn-primary-bg: linear-gradient(135deg, var(--color-accent-strong), var(--color-accent));
+  --btn-primary-color: #1a1a1a;
+  --btn-primary-shadow: 0 10px 32px rgba(255, 179, 0, 0.42);
+  --footer-bg: linear-gradient(135deg, #0c1447 0%, #1e3a8a 100%);
+  --footer-text: #edf2ff;
   --radius-md: 12px;
   --radius-lg: 18px;
   --space-1: 0.5rem;
@@ -27,22 +68,60 @@
 }
 
 [data-theme="dark"] {
-  --color-bg: #0b1020;
-  --color-surface: #141c34;
-  --color-muted-surface: #10182d;
-  --color-text: #edf2ff;
-  --color-text-muted: #a8b3d1;
-  --color-primary: #8ea0ff;
-  --color-primary-strong: #b4c2ff;
-  --color-accent: #e8c547;
-  --color-accent-strong: #f4df7b;
-  --color-border: #2a3558;
+  --color-bg: #07031a;
+  --color-surface: #12082e;
+  --color-muted-surface: #0d0624;
+  --color-text: #eef2ff;
+  --color-text-muted: #94a3b8;
+  --color-primary: #93c5fd;
+  --color-primary-strong: #bfdbfe;
+  --color-accent: #ffcc00;
+  --color-accent-strong: #ffe566;
+  --color-border: #1e3a8a;
   --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.35);
-  --glass-bg: rgba(20, 28, 52, 0.72);
-  --glass-border: rgba(232, 197, 71, 0.28);
-  --logo-studio-fill: #edf2ff;
-  --logo-tagline-fill: #a8b3d1;
-  --hero-glow: rgba(232, 197, 71, 0.12);
+  --glass-bg: rgba(18, 8, 46, 0.92);
+  --glass-border: rgba(59, 130, 246, 0.28);
+  --logo-studio-fill: #e0e7ff;
+  --logo-tagline-fill: #94a3b8;
+  --logo-gold-start: #ffe566;
+  --logo-gold-end: #ffcc00;
+  --logo-crystal-left-start: #3b82f6;
+  --logo-crystal-left-end: #1e3a8a;
+  --logo-crystal-right-start: #ffe566;
+  --logo-crystal-right-mid: #ffcc00;
+  --logo-crystal-right-end: #1e40af;
+  --logo-crystal-top-start: #fff9db;
+  --logo-crystal-top-end: #60a5fa;
+  --logo-crystal-aura-start: #2563eb;
+  --logo-crystal-aura-mid: #ffcc00;
+  --logo-crystal-aura-end: #ffe566;
+  --logo-crystal-edge-start: #ffcc00;
+  --logo-crystal-edge-end: #fff8dc;
+  --logo-crystal-silhouette: #030712;
+  --logo-crystal-ground: #0f172a;
+  --logo-crystal-accent-left: #93c5fd;
+  --logo-crystal-accent-right: #fcd34d;
+  --logo-crystal-drop-shadow: #000000;
+  --hero-glow: rgba(30, 58, 138, 0.38);
+  --body-glow-secondary: rgba(255, 204, 0, 0.18);
+  --palette-body-extra: radial-gradient(
+    circle at 80% 20%,
+    rgba(30, 58, 138, 0.22) 0,
+    transparent 45%
+  );
+  --bento-invoicefast-tint: rgba(255, 204, 0, 0.22);
+  --bento-invoicefast-border: rgba(255, 204, 0, 0.5);
+  --bento-logbook-tint: rgba(30, 58, 138, 0.28);
+  --bento-logbook-border: rgba(59, 130, 246, 0.42);
+  --bento-logbook-status-bg: rgba(30, 58, 138, 0.32);
+  --bento-logbook-status-text: #93c5fd;
+  --bento-free-tint: rgba(30, 58, 138, 0.16);
+  --bento-free-border: rgba(255, 204, 0, 0.28);
+  --btn-free-tool-bg: linear-gradient(135deg, #1e40af, #3b82f6);
+  --btn-free-tool-color: #fff;
+  --btn-free-tool-shadow: 0 10px 28px rgba(59, 130, 246, 0.28);
+  --btn-primary-color: #0c1447;
+  --footer-bg: linear-gradient(135deg, #020617 0%, #0c1447 100%);
 }
 
 *,
@@ -60,8 +139,9 @@ body {
   font-family: var(--font-body), "Inter", sans-serif;
   color: var(--color-text);
   background:
+    var(--palette-body-extra),
     radial-gradient(circle at 12% -8%, var(--hero-glow) 0, transparent 38%),
-    radial-gradient(circle at 88% 0%, rgba(201, 162, 39, 0.12) 0, transparent 32%),
+    radial-gradient(circle at 88% 0%, var(--body-glow-secondary) 0, transparent 32%),
     var(--color-bg);
   line-height: 1.55;
   transition: background-color 0.25s ease, color 0.25s ease;
@@ -241,9 +321,9 @@ summary:focus-visible {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-accent-strong), var(--color-accent));
-  color: #1a1a1a;
-  box-shadow: 0 8px 22px rgba(201, 162, 39, 0.35);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-color);
+  box-shadow: var(--btn-primary-shadow);
 }
 
 .btn-primary:hover {
@@ -251,7 +331,7 @@ summary:focus-visible {
 }
 
 [data-theme="dark"] .btn-primary {
-  color: #10182d;
+  color: var(--btn-primary-color);
 }
 
 .btn-secondary {
@@ -718,12 +798,12 @@ h3 {
 
 .site-footer {
   padding: var(--space-4) 0;
-  background: var(--color-primary);
-  color: #edf2ff;
+  background: var(--footer-bg);
+  color: var(--footer-text);
 }
 
 [data-theme="dark"] .site-footer {
-  background: #080d1a;
+  background: var(--footer-bg);
 }
 
 .footer-grid {
@@ -848,6 +928,29 @@ h3 {
   padding: var(--space-4);
   display: grid;
   place-items: center;
+  border: 2px solid rgba(255, 179, 0, 0.28);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(220, 228, 255, 0.88) 55%,
+    rgba(255, 204, 0, 0.08) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(30, 58, 138, 0.08),
+    0 16px 40px rgba(12, 20, 71, 0.12);
+}
+
+[data-theme="dark"] .studio-hero-logo {
+  border-color: rgba(255, 204, 0, 0.32);
+  background: linear-gradient(
+    165deg,
+    rgba(18, 8, 46, 0.96) 0%,
+    rgba(30, 58, 138, 0.22) 50%,
+    rgba(255, 204, 0, 0.1) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .bento-grid {
@@ -863,7 +966,10 @@ h3 {
   flex-direction: column;
   gap: var(--space-2);
   min-height: 100%;
+  border-width: 2px;
+  border-style: solid;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 14px 36px rgba(12, 20, 71, 0.1);
 }
 
 .bento-card:hover {
@@ -877,50 +983,61 @@ h3 {
 
 .bento-invoicefast {
   min-height: 320px;
-  border-color: rgba(201, 162, 39, 0.28);
+  border-color: var(--bento-invoicefast-border);
   background: linear-gradient(
     135deg,
-    rgba(201, 162, 39, 0.09) 0%,
+    var(--bento-invoicefast-tint) 0%,
     var(--glass-bg) 58%
   );
 }
 
 .bento-logbook {
   min-height: 320px;
-  border-color: rgba(13, 148, 136, 0.32);
+  border-color: var(--bento-logbook-border);
   background: linear-gradient(
     135deg,
-    rgba(13, 148, 136, 0.1) 0%,
+    var(--bento-logbook-tint) 0%,
     var(--glass-bg) 58%
   );
 }
 
 .bento-logbook .product-status {
-  background: rgba(13, 148, 136, 0.14);
-  color: #0f766e;
+  background: var(--bento-logbook-status-bg);
+  color: var(--bento-logbook-status-text);
 }
 
 [data-theme="dark"] .bento-invoicefast {
-  border-color: rgba(212, 175, 55, 0.22);
+  border-color: var(--bento-invoicefast-border);
   background: linear-gradient(
     135deg,
-    rgba(201, 162, 39, 0.1) 0%,
+    var(--bento-invoicefast-tint) 0%,
     var(--glass-bg) 58%
   );
 }
 
 [data-theme="dark"] .bento-logbook {
-  border-color: rgba(45, 212, 191, 0.22);
+  border-color: var(--bento-logbook-border);
   background: linear-gradient(
     135deg,
-    rgba(13, 148, 136, 0.14) 0%,
+    var(--bento-logbook-tint) 0%,
     var(--glass-bg) 58%
   );
 }
 
 [data-theme="dark"] .bento-logbook .product-status {
-  background: rgba(45, 212, 191, 0.14);
-  color: #5eead4;
+  background: var(--bento-logbook-status-bg);
+  color: var(--bento-logbook-status-text);
+}
+
+.bento-invoicefast .product-highlights,
+.bento-logbook .product-highlights {
+  flex: 1;
+}
+
+.bento-invoicefast .btn-primary,
+.bento-logbook .btn-primary {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .section-lead {
@@ -960,8 +1077,8 @@ h3 {
   margin: 0 0 var(--space-2);
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
-  background: rgba(15, 118, 110, 0.12);
-  color: #115e59;
+  background: rgba(255, 179, 0, 0.18);
+  color: #92400e;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -969,7 +1086,8 @@ h3 {
 }
 
 [data-theme="dark"] .product-status {
-  color: #5eead4;
+  background: rgba(255, 204, 0, 0.16);
+  color: #fcd34d;
 }
 
 .product-status-soon {
@@ -978,30 +1096,30 @@ h3 {
 }
 
 .product-status-free {
-  background: rgba(99, 102, 241, 0.12);
-  color: #4338ca;
+  background: rgba(30, 58, 138, 0.14);
+  color: var(--color-primary-strong);
 }
 
 [data-theme="dark"] .product-status-free {
-  background: rgba(129, 140, 248, 0.16);
-  color: #a5b4fc;
+  background: rgba(59, 130, 246, 0.18);
+  color: #93c5fd;
 }
 
 .bento-free-tool {
-  border-color: rgba(99, 102, 241, 0.24);
+  border-color: var(--bento-free-border);
   background: linear-gradient(
     135deg,
-    rgba(99, 102, 241, 0.08) 0%,
-    var(--glass-bg) 58%
+    var(--bento-free-tint) 0%,
+    var(--glass-bg) 62%
   );
 }
 
 [data-theme="dark"] .bento-free-tool {
-  border-color: rgba(129, 140, 248, 0.2);
+  border-color: var(--bento-free-border);
   background: linear-gradient(
     135deg,
-    rgba(99, 102, 241, 0.12) 0%,
-    var(--glass-bg) 58%
+    var(--bento-free-tint) 0%,
+    var(--glass-bg) 62%
   );
 }
 
@@ -1038,10 +1156,10 @@ h3 {
 }
 
 .btn-free-tool {
-  background: linear-gradient(135deg, #0f766e, #14b8a6);
-  color: #fff;
+  background: var(--btn-free-tool-bg);
+  color: var(--btn-free-tool-color);
   border-color: transparent;
-  box-shadow: 0 8px 22px rgba(13, 148, 136, 0.35);
+  box-shadow: var(--btn-free-tool-shadow);
 }
 
 .btn-free-tool:hover {
@@ -1050,9 +1168,9 @@ h3 {
 }
 
 [data-theme="dark"] .btn-free-tool {
-  background: linear-gradient(135deg, #0d9488, #2dd4bf);
-  color: #042f2e;
-  box-shadow: 0 8px 22px rgba(45, 212, 191, 0.25);
+  background: var(--btn-free-tool-bg);
+  color: var(--btn-free-tool-color);
+  box-shadow: var(--btn-free-tool-shadow);
 }
 
 .product-tagline {

@@ -1,4 +1,4 @@
-/** Canonical AuraStudioZa brand files in /public (keep in sync via `npm run export:logo`). */
+/** Canonical AuraStudioZa brand files in /public (Vivid blue+gold — sync via `npm run export:logo`). */
 export const brandAssets = {
   favicon: "/icon.svg",
   markSvg: "/brand-mark.svg",
