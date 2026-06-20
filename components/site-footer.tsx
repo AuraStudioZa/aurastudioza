@@ -30,10 +30,7 @@ export function SiteFooter({
               <a href={siteLinks.logbook}>Vehicle Logbook</a>
             </li>
             <li>
-              <a href={siteLinks.webDesign}>Web Design</a>
-            </li>
-            <li>
-              <a href={siteLinks.emailSignature}>Email signature</a>
+              <a href={`${siteLinks.home}#free-tools`}>Free tools</a>
             </li>
             <li>
               <a href={siteLinks.contact}>Contact</a>

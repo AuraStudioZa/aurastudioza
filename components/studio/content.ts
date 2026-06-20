@@ -32,4 +32,14 @@ export const freeTools = [
     href: "/email-signature",
     highlights: ["No sign-up", "Rich HTML copy", "InvoiceFast line optional"],
   },
+  {
+    slug: "vat-calculator",
+    name: "VAT Calculator",
+    tagline: "Convert incl. ↔ excl. VAT/GST for 40+ countries.",
+    description:
+      "Multi-currency tax breakdown — country picker sets currency, symbol, and standard rate.",
+    status: "Free" as const,
+    href: "/vat-calculator",
+    highlights: ["40+ countries", "Live currency format", "Copy breakdown"],
+  },
 ];

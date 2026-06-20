@@ -717,7 +717,7 @@ h3 {
 }
 
 .site-footer {
-  padding: var(--space-6) 0;
+  padding: var(--space-4) 0;
   background: var(--color-primary);
   color: #edf2ff;
 }
@@ -747,16 +747,20 @@ h3 {
 }
 
 .footer-copy {
-  margin: 0.6rem 0 0;
+  margin: 0.35rem 0 0;
   color: #94a3b8;
+  font-size: 0.92rem;
+  max-width: 36ch;
 }
 
 .footer-links {
   list-style: none;
   display: grid;
-  gap: var(--space-1);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem 1.25rem;
   margin: 0;
   padding: 0;
+  font-size: 0.92rem;
 }
 
 .footer-links a {
@@ -806,10 +810,13 @@ h3 {
   .footer-grid {
     grid-template-columns: 1.2fr 1fr;
     align-items: start;
+    gap: var(--space-3);
   }
 
   .footer-links {
-    justify-items: end;
+    grid-template-columns: repeat(2, auto);
+    justify-content: end;
+    column-gap: var(--space-4);
   }
 }
 
@@ -1002,7 +1009,32 @@ h3 {
   display: grid;
   gap: var(--space-3);
   grid-template-columns: 1fr;
-  max-width: 42rem;
+  align-items: stretch;
+}
+
+@media (min-width: 640px) {
+  .free-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.free-tools-grid .bento-card {
+  min-height: 100%;
+}
+
+.free-tools-grid .product-highlights {
+  flex: 1;
+}
+
+.free-tools-grid .btn-free-tool {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+#free-tools.section {
+  padding-bottom: var(--space-5);
 }
 
 .btn-free-tool {
@@ -1186,6 +1218,117 @@ h3 {
     height: 36px;
     font-size: 0.9rem;
   }
+}
+
+/* Compact hero for free tools (less gap below site header) */
+.tool-page-hero {
+  padding: var(--space-3) 0 var(--space-2);
+}
+
+.tool-page-hero h1 {
+  font-size: clamp(1.65rem, 4vw, 2.35rem);
+  margin-bottom: var(--space-2);
+}
+
+.tool-page-hero .hero-subheadline {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.tool-page-main {
+  padding-top: 0;
+  padding-bottom: var(--space-3);
+}
+
+.tool-page-faq {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-5);
+}
+
+.tool-page-faq .section-heading {
+  margin-bottom: var(--space-3);
+}
+
+.tool-product-promo {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(30, 42, 90, 0.96) 0%,
+    rgba(47, 63, 122, 0.92) 52%,
+    rgba(201, 162, 39, 0.22) 100%
+  );
+  color: #edf2ff;
+  box-shadow: 0 14px 32px rgba(15, 22, 40, 0.22);
+}
+
+[data-theme="dark"] .tool-product-promo {
+  border-color: rgba(232, 197, 71, 0.28);
+  background: linear-gradient(
+    135deg,
+    rgba(12, 18, 36, 0.98) 0%,
+    rgba(22, 32, 62, 0.95) 55%,
+    rgba(201, 162, 39, 0.16) 100%
+  );
+}
+
+.tool-product-promo .eyebrow {
+  color: #bfdbfe;
+}
+
+.tool-product-promo-title {
+  margin: 0 0 var(--space-2);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  line-height: 1.25;
+  color: #fff;
+}
+
+.tool-product-promo-text {
+  margin: 0 0 var(--space-2);
+  color: #cbd5e1;
+  max-width: 52ch;
+}
+
+.tool-product-promo-points {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #dbeafe;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.tool-product-promo-points li + li {
+  margin-top: 0.25rem;
+}
+
+.tool-product-promo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .tool-product-promo {
+    grid-template-columns: 1.4fr auto;
+    align-items: center;
+    padding: var(--space-5);
+  }
+
+  .tool-product-promo-actions {
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 12rem;
+  }
+}
+
+.sig-select {
+  cursor: pointer;
+  appearance: auto;
 }
 
 /* Email signature generator */
@@ -1628,4 +1771,148 @@ h3 {
 
 .sig-tip p + p {
   margin-top: 0.5rem;
+}
+
+/* VAT calculator */
+.vat-rate-presets {
+  margin-top: var(--space-2);
+}
+
+.vat-results {
+  padding: var(--space-4);
+}
+
+.vat-results-list {
+  margin: 0;
+}
+
+.vat-results-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vat-results-row:last-child {
+  border-bottom: 0;
+}
+
+.vat-results-row dt {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.vat-results-row dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.vat-results-row-accent dd {
+  color: var(--color-accent-strong, #9a7b1a);
+}
+
+.vat-results-row-total {
+  padding-top: var(--space-3);
+  margin-top: var(--space-1);
+  border-top: 2px solid var(--color-border);
+  border-bottom: 0;
+}
+
+.vat-results-row-total dd {
+  font-size: 1.35rem;
+  color: var(--color-accent-strong);
+}
+
+.vat-country-combobox {
+  position: relative;
+}
+
+.vat-country-list-wrap {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  top: calc(100% - 0.35rem);
+}
+
+.vat-country-list-heading {
+  margin: 0;
+  padding: 0.4rem 0.65rem 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: var(--color-muted-surface);
+}
+
+.vat-country-list {
+  position: static;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.vat-country-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  background: transparent;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.vat-country-option:hover,
+.vat-country-option.active {
+  background: var(--color-muted-surface);
+}
+
+.vat-country-option.selected {
+  outline: 1px solid var(--color-accent);
+}
+
+.vat-country-option-label {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.vat-country-option-meta {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.vat-country-match {
+  padding: 0;
+  background: rgba(201, 162, 39, 0.28);
+  color: inherit;
+  border-radius: 2px;
+}
+
+.vat-country-empty,
+.vat-detect-note {
+  margin-top: 0.35rem;
 }

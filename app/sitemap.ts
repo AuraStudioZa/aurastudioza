@@ -41,6 +41,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
     },
     {
+      url: "https://aurastudioza.com/vat-calculator",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+    {
       url: "https://aurastudioza.com/contact",
       lastModified,
       changeFrequency: "monthly",

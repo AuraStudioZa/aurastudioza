@@ -164,8 +164,12 @@ export function StudioHomePage() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <a className="btn btn-free-tool" href={tool.href}>
-                    Open {tool.name}
+                  <a
+                    className="btn btn-free-tool"
+                    href={tool.href}
+                    aria-label={`Open ${tool.name}`}
+                  >
+                    {tool.slug === "email-signature" ? "Open generator" : "Open calculator"}
                   </a>
                 </article>
               ))}

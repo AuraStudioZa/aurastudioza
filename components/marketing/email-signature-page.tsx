@@ -265,8 +265,8 @@ export function EmailSignaturePage() {
       </a>
       <Header />
       <main id="main-content">
-        <section className="hero section sig-hero">
-          <div className="container hero-grid">
+        <section className="section tool-page-hero">
+          <div className="container">
             <div className="hero-copy reveal">
               <p className="eyebrow">Free tool by AuraStudioZa</p>
               <h1>Email signature generator for freelancers and creatives.</h1>
@@ -278,7 +278,7 @@ export function EmailSignaturePage() {
           </div>
         </section>
 
-        <section className="section sig-builder-section">
+        <section className="section sig-builder-section tool-page-main">
           <div className="container">
             <div className="sig-template-picker">
             {templateGroups.map((group) => (

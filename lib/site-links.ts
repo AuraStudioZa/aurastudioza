@@ -18,6 +18,7 @@ export const siteLinks = {
   logbook: "/logbook",
   webDesign: "/web-design",
   emailSignature: "/email-signature",
+  vatCalculator: "/vat-calculator",
   /** Canonical InvoiceFast legal pages (app subdomain). */
   privacy: appLinks.privacy,
   terms: appLinks.terms,
