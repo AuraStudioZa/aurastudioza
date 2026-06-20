@@ -2074,17 +2074,63 @@ h3 {
   position: relative;
 }
 
-.vat-country-select {
-  margin-bottom: var(--space-3);
+.vat-country-control {
+  position: relative;
 }
 
-.vat-country-search-label {
-  margin-top: 0;
+.vat-country-field {
+  display: flex;
+  align-items: stretch;
 }
 
-.sig-label-optional {
-  font-weight: 500;
-  color: var(--color-text-muted);
+.vat-country-input {
+  flex: 1;
+  min-width: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+
+.vat-country-field--open .vat-country-input {
+  border-bottom-left-radius: 0;
+}
+
+.vat-country-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--color-muted-surface);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.vat-country-field--open .vat-country-toggle {
+  border-bottom-right-radius: 0;
+}
+
+.vat-country-toggle:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-muted-surface) 80%, var(--color-accent) 20%);
+}
+
+.vat-country-chevron {
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-0.12rem);
+  transition: transform 0.2s ease;
+}
+
+.vat-country-field--open .vat-country-chevron {
+  transform: rotate(-135deg) translateY(0.12rem);
 }
 
 .vat-country-list-wrap {
@@ -2092,7 +2138,32 @@ h3 {
   z-index: 40;
   left: 0;
   right: 0;
-  top: calc(100% - 0.35rem);
+  top: 100%;
+  margin-top: -1px;
+}
+
+.vat-country-region {
+  padding: 0.45rem 0.65rem 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-muted-surface);
+}
+
+.vat-country-empty--attached {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
 }
 
 .vat-country-list-heading {

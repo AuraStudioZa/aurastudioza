@@ -6,7 +6,12 @@ import {
   highlightMatch,
   searchJurisdictions,
 } from "../../lib/vat-country-detect";
-import { getJurisdiction, jurisdictionsByRegion, VAT_JURISDICTION_REGIONS } from "../../lib/vat-jurisdictions";
+import {
+  getJurisdiction,
+  jurisdictionsByRegion,
+  VAT_JURISDICTION_REGIONS,
+  type VatJurisdiction,
+} from "../../lib/vat-jurisdictions";
 
 type VatCountryComboboxProps = {
   jurisdictionId: string;
@@ -14,11 +19,23 @@ type VatCountryComboboxProps = {
   detectNote?: string | null;
 };
 
+type ListOption = {
+  kind: "option";
+  item: VatJurisdiction;
+};
+
+type ListHeader = {
+  kind: "header";
+  label: string;
+};
+
+type ListEntry = ListOption | ListHeader;
+
 function matchJurisdictionFromQuery(query: string, currentId: string) {
   const trimmed = query.trim();
   if (!trimmed) return null;
 
-  const matches = searchJurisdictions(trimmed, { currentId, limit: 20 });
+  const matches = searchJurisdictions(trimmed, { currentId, limit: 100 });
   const lower = trimmed.toLowerCase();
 
   const exact =
@@ -30,6 +47,25 @@ function matchJurisdictionFromQuery(query: string, currentId: string) {
   if (exact) return exact;
   if (matches.length === 1) return matches[0];
   return matches[0] ?? null;
+}
+
+function buildListEntries(query: string, currentId: string): ListEntry[] {
+  const trimmed = query.trim();
+  if (trimmed) {
+    return searchJurisdictions(trimmed, { currentId, limit: 100 }).map((item) => ({
+      kind: "option" as const,
+      item,
+    }));
+  }
+
+  const entries: ListEntry[] = [];
+  for (const region of VAT_JURISDICTION_REGIONS) {
+    entries.push({ kind: "header", label: region });
+    for (const item of jurisdictionsByRegion(region)) {
+      entries.push({ kind: "option", item });
+    }
+  }
+  return entries;
 }
 
 function MatchLabel({ text, query }: { text: string; query: string }) {
@@ -54,38 +90,42 @@ export function VatCountryCombobox({
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const pickingRef = useRef(false);
-  const [searching, setSearching] = useState(false);
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
   const selected = getJurisdiction(jurisdictionId);
-  const results = useMemo(
-    () => searchJurisdictions(query, { currentId: jurisdictionId }),
+  const entries = useMemo(
+    () => buildListEntries(query, jurisdictionId),
     [query, jurisdictionId]
+  );
+  const options = useMemo(
+    () => entries.filter((entry): entry is ListOption => entry.kind === "option"),
+    [entries]
   );
 
   useEffect(() => {
-    if (!searching) {
+    if (!open) {
       setQuery("");
       setActiveIndex(0);
     }
-  }, [searching, jurisdictionId]);
+  }, [open, jurisdictionId]);
 
   useEffect(() => {
     setActiveIndex(0);
   }, [query]);
 
   useEffect(() => {
-    if (!searching || !listRef.current) return;
+    if (!open || !listRef.current) return;
     const active = listRef.current.querySelector<HTMLElement>('[data-active="true"]');
     active?.scrollIntoView({ block: "nearest" });
-  }, [activeIndex, searching, results.length]);
+  }, [activeIndex, open, entries.length]);
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
       if (pickingRef.current) return;
       if (!rootRef.current?.contains(event.target as Node)) {
-        setSearching(false);
+        setOpen(false);
       }
     }
 
@@ -95,7 +135,7 @@ export function VatCountryCombobox({
 
   function pick(id: string) {
     onSelect(id);
-    setSearching(false);
+    setOpen(false);
     setQuery("");
     inputRef.current?.blur();
   }
@@ -109,34 +149,41 @@ export function VatCountryCombobox({
     return false;
   }
 
+  function openList(selectText = false) {
+    setOpen(true);
+    if (selectText && inputRef.current) {
+      requestAnimationFrame(() => inputRef.current?.select());
+    }
+  }
+
   function onInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      setSearching(true);
-      setActiveIndex((i) => Math.min(i + 1, Math.max(0, results.length - 1)));
+      setOpen(true);
+      setActiveIndex((i) => Math.min(i + 1, Math.max(0, options.length - 1)));
       return;
     }
 
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      setSearching(true);
+      setOpen(true);
       setActiveIndex((i) => Math.max(i - 1, 0));
       return;
     }
 
     if (event.key === "Enter") {
       event.preventDefault();
-      if (searching && results[activeIndex]) {
-        pick(results[activeIndex].id);
+      if (open && options[activeIndex]) {
+        pick(options[activeIndex].item.id);
         return;
       }
       if (commitQuery()) return;
-      setSearching(false);
+      setOpen(false);
       return;
     }
 
     if (event.key === "Escape") {
-      setSearching(false);
+      setOpen(false);
       setQuery("");
     }
   }
@@ -144,129 +191,145 @@ export function VatCountryCombobox({
   function onBlur() {
     window.setTimeout(() => {
       if (pickingRef.current) return;
-      if (searching && query.trim()) {
+      if (open && query.trim()) {
         if (!commitQuery()) {
-          setSearching(false);
+          setOpen(false);
           setQuery("");
         }
         return;
       }
-      setSearching(false);
+      setOpen(false);
     }, 0);
   }
 
-  const showList = searching && results.length > 0;
-  const displayValue = searching ? query : formatJurisdictionOption(selected);
-  const listHeading = query.trim() ? `${results.length} matches` : "Suggestions";
-  const selectId = `${listId}-select`;
+  const showList = open && options.length > 0;
+  const displayValue = open ? query : formatJurisdictionOption(selected);
+  const listHeading = query.trim()
+    ? `${options.length} match${options.length === 1 ? "" : "es"}`
+    : "All countries";
   const inputId = `${listId}-input`;
-
-  function onSelectChange(id: string) {
-    setSearching(false);
-    setQuery("");
-    onSelect(id);
-  }
+  const activeOptionId = options[activeIndex]?.item.id;
 
   return (
     <div className="vat-country-combobox" ref={rootRef}>
-      <label className="sig-label" htmlFor={selectId}>
+      <label className="sig-label" htmlFor={inputId}>
         Country / region
       </label>
-      <select
-        id={selectId}
-        className="sig-input sig-select vat-country-select"
-        value={jurisdictionId}
-        onChange={(e) => onSelectChange(e.target.value)}
-      >
-        {VAT_JURISDICTION_REGIONS.map((region) => (
-          <optgroup key={region} label={region}>
-            {jurisdictionsByRegion(region).map((item) => (
-              <option key={item.id} value={item.id}>
-                {formatJurisdictionOption(item)}
-              </option>
-            ))}
-          </optgroup>
-        ))}
-      </select>
-
-      <label className="sig-label vat-country-search-label" htmlFor={inputId}>
-        Search countries <span className="sig-label-optional">(optional)</span>
-      </label>
-      <input
-        ref={inputRef}
-        id={inputId}
-        className="sig-input"
-        type="text"
-        role="combobox"
-        aria-expanded={showList}
-        aria-controls={showList ? `${listId}-listbox` : undefined}
-        aria-autocomplete="list"
-        autoComplete="off"
-        spellCheck={false}
-        placeholder="Type to filter — UK, ZAR, Germany…"
-        value={displayValue}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          setSearching(true);
-        }}
-        onFocus={(e) => {
-          setSearching(true);
-          setQuery(formatJurisdictionOption(selected));
-          requestAnimationFrame(() => e.target.select());
-        }}
-        onBlur={onBlur}
-        onKeyDown={onInputKeyDown}
-      />
-      {detectNote ? <p className="sig-hint vat-detect-note">{detectNote}</p> : null}
-      {showList ? (
-        <div className="vat-country-list-wrap">
-          <p className="vat-country-list-heading">{listHeading}</p>
-          <ul
-            ref={listRef}
-            id={`${listId}-listbox`}
-            className="vat-country-list"
-            role="listbox"
-            aria-label="Country suggestions"
+      <div className={`vat-country-control${open ? " vat-country-control--open" : ""}`}>
+        <div className={`vat-country-field${open ? " vat-country-field--open" : ""}`}>
+          <input
+            ref={inputRef}
+            id={inputId}
+            className="sig-input vat-country-input"
+            type="text"
+            role="combobox"
+            aria-expanded={open}
+            aria-controls={showList ? `${listId}-listbox` : undefined}
+            aria-autocomplete="list"
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="Choose or type — South Africa, UK, ZAR…"
+            value={displayValue}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setOpen(true);
+            }}
+            onFocus={(e) => {
+              setOpen(true);
+              setQuery(formatJurisdictionOption(selected));
+              requestAnimationFrame(() => e.target.select());
+            }}
+            onBlur={onBlur}
+            onKeyDown={onInputKeyDown}
+          />
+          <button
+            type="button"
+            className="vat-country-toggle"
+            aria-label={open ? "Close country list" : "Show all countries"}
+            aria-expanded={open}
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              if (open) {
+                setOpen(false);
+                setQuery("");
+                inputRef.current?.blur();
+              } else {
+                openList(true);
+                setQuery("");
+                inputRef.current?.focus();
+              }
+            }}
           >
-            {results.map((item, index) => (
-              <li
-                key={item.id}
-                role="option"
-                aria-selected={index === activeIndex}
-                data-active={index === activeIndex ? "true" : undefined}
-              >
-                <button
-                  type="button"
-                  className={`vat-country-option${index === activeIndex ? " active" : ""}${
-                    item.id === jurisdictionId ? " selected" : ""
-                  }`}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    pickingRef.current = true;
-                    pick(item.id);
-                    window.setTimeout(() => {
-                      pickingRef.current = false;
-                    }, 0);
-                  }}
-                >
-                  <span className="vat-country-option-label">
-                    <MatchLabel text={item.label} query={query} />
-                  </span>
-                  <span className="vat-country-option-meta">
-                    {item.currency} · {item.standardVatRate}% {item.taxName}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
+            <span className="vat-country-chevron" aria-hidden />
+          </button>
         </div>
-      ) : searching && query.trim() && results.length === 0 ? (
-        <p className="sig-hint vat-country-empty">No match — try &ldquo;UK&rdquo;, &ldquo;GBP&rdquo;, or &ldquo;Germany&rdquo;.</p>
-      ) : null}
-      {!searching ? (
+
+        {showList ? (
+          <div className="vat-country-list-wrap">
+            <p className="vat-country-list-heading">{listHeading}</p>
+            <ul
+              ref={listRef}
+              id={`${listId}-listbox`}
+              className="vat-country-list"
+              role="listbox"
+              aria-label="Countries and regions"
+            >
+              {entries.map((entry) => {
+                if (entry.kind === "header") {
+                  return (
+                    <li key={`header-${entry.label}`} className="vat-country-region" role="presentation">
+                      {entry.label}
+                    </li>
+                  );
+                }
+
+                const optionIndex = options.findIndex((o) => o.item.id === entry.item.id);
+                const isActive = entry.item.id === activeOptionId;
+                return (
+                  <li
+                    key={entry.item.id}
+                    role="option"
+                    aria-selected={isActive}
+                    data-active={isActive ? "true" : undefined}
+                  >
+                    <button
+                      type="button"
+                      className={`vat-country-option${isActive ? " active" : ""}${
+                        entry.item.id === jurisdictionId ? " selected" : ""
+                      }`}
+                      onMouseEnter={() => setActiveIndex(optionIndex)}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        pickingRef.current = true;
+                        pick(entry.item.id);
+                        window.setTimeout(() => {
+                          pickingRef.current = false;
+                        }, 0);
+                      }}
+                    >
+                      <span className="vat-country-option-label">
+                        <MatchLabel text={entry.item.label} query={query} />
+                      </span>
+                      <span className="vat-country-option-meta">
+                        {entry.item.currency} · {entry.item.standardVatRate}% {entry.item.taxName}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : open && query.trim() && options.length === 0 ? (
+          <p className="sig-hint vat-country-empty vat-country-empty--attached">
+            No match — try &ldquo;UK&rdquo;, &ldquo;ZAR&rdquo;, or &ldquo;Germany&rdquo;.
+          </p>
+        ) : null}
+      </div>
+
+      {detectNote ? <p className="sig-hint vat-detect-note">{detectNote}</p> : null}
+      {!open ? (
         <p className="sig-hint">
-          Use the dropdown for a quick pick, or search to jump to a country. Currency and rate
+          Click the field or arrow to browse all countries, or type to filter. Currency and rate
           update on selection.
         </p>
       ) : null}
