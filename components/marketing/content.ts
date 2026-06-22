@@ -19,12 +19,17 @@ export const features = [
   {
     title: "Invoice history",
     description:
-      "Saved invoices in your account — after trial, Free keeps 3; Pro keeps 50 (oldest removed when full).",
+      "Saved invoices in your account — after trial, Free keeps 10; Pro keeps 50 (oldest removed when full).",
   },
   {
     title: "Payment details on PDF",
     description:
       "Save bank and VAT registration once on your profile; show them on every PDF automatically.",
+  },
+  {
+    title: "Share on WhatsApp",
+    description:
+      "Send the PDF and a prefilled payment message to clients in one tap from the app.",
   },
   {
     title: "CSV exports",
@@ -46,7 +51,7 @@ export const steps = [
   {
     title: "Export or send",
     description:
-      "During your 14-day Pro trial: email clients or download PDFs with no watermark.",
+      "During your 14-day Pro trial: email clients, share on WhatsApp, or download PDFs with no watermark.",
   },
   {
     title: "Get paid",
@@ -75,8 +80,9 @@ export const plans = {
     price: "R0",
     subtext: "After your trial ends",
     features: [
-      "3 PDF downloads per month",
-      "3 saved invoices in history",
+      "10 PDF downloads per month",
+      "10 saved invoices in history",
+      "Share on WhatsApp",
       "Watermark on PDFs",
       "Bank & VAT details on PDF (profile)",
       "VAT-inclusive ZAR line items",
@@ -110,7 +116,7 @@ export const faqs = [
   {
     question: "What happens after the trial?",
     answer:
-      "Your account moves to the free plan: 3 watermarked PDF downloads per month and up to 3 saved invoices, unless you upgrade to Pro.",
+      "Your account moves to the free plan: 10 watermarked PDF downloads per month and up to 10 saved invoices, unless you upgrade to Pro.",
   },
   {
     question: "Does the Free plan include a watermark?",
