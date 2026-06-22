@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useId } from "react";
 
 type AuraStudioZaMarkProps = {
   variant?: "compact" | "hero";
@@ -9,33 +9,18 @@ type AuraStudioZaMarkProps = {
 
 const sans = "var(--font-display), 'Sora', 'Inter', Arial, sans-serif";
 
-/** Crystalline 3D "A" — colours follow CSS tokens in globals.css */
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduced(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  return reduced;
-}
+/** Crystalline 3D "A" — colours follow CSS tokens in globals.css (static SVG; header uses CSS shimmer only). */
 
 function CrystalMonogram({
   uid,
   x = 0,
   y = 0,
   scale = 1,
-  animate = false,
 }: {
   uid: string;
   x?: number;
   y?: number;
   scale?: number;
-  animate?: boolean;
 }) {
   const leftFacet = `lf-${uid}`;
   const rightFacet = `rf-${uid}`;
@@ -89,14 +74,7 @@ function CrystalMonogram({
           />
         </filter>
       </defs>
-      <ellipse cx="32" cy="12" rx="30" ry="12" fill={`url(#${auraGlow})`} filter={`url(#${auraBlur})`} opacity="0.9">
-        {animate ? (
-          <>
-            <animate attributeName="opacity" values="0.72;0.95;0.72" dur="4.5s" repeatCount="indefinite" />
-            <animate attributeName="rx" values="28;31;28" dur="4.5s" repeatCount="indefinite" />
-          </>
-        ) : null}
-      </ellipse>
+      <ellipse cx="32" cy="12" rx="30" ry="12" fill={`url(#${auraGlow})`} filter={`url(#${auraBlur})`} opacity="0.85" />
       <ellipse
         cx="32"
         cy="58"
@@ -139,14 +117,12 @@ function Wordmark({
   y,
   x,
   anchor = "start",
-  animate = false,
 }: {
   uid: string;
   size: number;
   y: number;
   x: number;
   anchor?: "start" | "middle";
-  animate?: boolean;
 }) {
   const goldText = `wm-gold-${uid}`;
 
@@ -154,36 +130,9 @@ function Wordmark({
     <>
       <defs>
         <linearGradient id={goldText} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="var(--logo-gold-start, #f4df7b)">
-            {animate ? (
-              <animate
-                attributeName="offset"
-                values="-0.35;1.15;-0.35"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            ) : null}
-          </stop>
-          <stop offset="50%" stopColor="var(--logo-gold-end, #ffe566)">
-            {animate ? (
-              <animate
-                attributeName="offset"
-                values="0.15;1.45;0.15"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            ) : null}
-          </stop>
-          <stop offset="100%" stopColor="var(--logo-gold-end, #c9a227)">
-            {animate ? (
-              <animate
-                attributeName="offset"
-                values="0.55;1.85;0.55"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            ) : null}
-          </stop>
+          <stop offset="0%" stopColor="var(--logo-gold-start, #f4df7b)" />
+          <stop offset="50%" stopColor="var(--logo-gold-end, #ffe566)" />
+          <stop offset="100%" stopColor="var(--logo-gold-end, #c9a227)" />
         </linearGradient>
       </defs>
       <text
@@ -206,12 +155,10 @@ function Wordmark({
 export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraStudioZaMarkProps) {
   const isHero = variant === "hero";
   const uid = useId().replace(/:/g, "");
-  const reducedMotion = usePrefersReducedMotion();
-  const animate = !reducedMotion;
 
   return (
     <svg
-      className={`${className}${animate ? " brand-mark-animated" : ""}`.trim()}
+      className={className.trim()}
       viewBox={isHero ? "0 0 360 300" : "0 0 310 68"}
       role="img"
       aria-label="AuraStudioZa — Design, Media, Creative"
@@ -219,8 +166,8 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
     >
       {isHero ? (
         <>
-          <CrystalMonogram uid={uid} x={116} y={8} scale={1.35} animate={animate} />
-          <Wordmark uid={uid} size={34} x={180} y={198} anchor="middle" animate={animate} />
+          <CrystalMonogram uid={uid} x={116} y={8} scale={1.35} />
+          <Wordmark uid={uid} size={34} x={180} y={198} anchor="middle" />
           <text
             x={180}
             y={228}
@@ -236,8 +183,8 @@ export function AuraStudioZaMark({ variant = "compact", className = "" }: AuraSt
         </>
       ) : (
         <>
-          <CrystalMonogram uid={uid} x={0} y={2} scale={1} animate={animate} />
-          <Wordmark uid={uid} size={18} x={72} y={44} animate={animate} />
+          <CrystalMonogram uid={uid} x={0} y={2} scale={1} />
+          <Wordmark uid={uid} size={18} x={72} y={44} />
         </>
       )}
     </svg>

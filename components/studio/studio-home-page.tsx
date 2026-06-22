@@ -73,8 +73,8 @@ export function StudioHomePage() {
       <StudioHeader />
       <main id="main-content">
         <section className="studio-hero section">
-          <div className="container studio-hero-layout reveal">
-            <div className="studio-hero-copy">
+          <div className="container studio-hero-layout">
+            <div className="studio-hero-copy reveal">
               <h1 className="display-heading">Practical software for modern independent work.</h1>
               <p className="studio-hero-subheadline">
                 AuraStudioZa builds focused tools that help freelancers and small businesses work

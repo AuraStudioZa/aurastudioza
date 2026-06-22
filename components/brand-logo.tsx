@@ -13,12 +13,17 @@ export function BrandLogo({ href = "/", variant = "compact" }: BrandLogoProps) {
     />
   );
 
+  const shellClass =
+    variant === "compact"
+      ? "brand brand-logo brand-logo-alive"
+      : "brand brand-logo brand-logo-static";
+
   if (href === null) {
-    return <span className="brand brand-logo brand-logo-alive">{mark}</span>;
+    return <span className={shellClass}>{mark}</span>;
   }
 
   return (
-    <a href={href} className="brand brand-logo brand-logo-alive" aria-label="AuraStudioZa Home">
+    <a href={href} className={shellClass} aria-label="AuraStudioZa Home">
       {mark}
     </a>
   );
