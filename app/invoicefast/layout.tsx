@@ -3,7 +3,7 @@ import { pageMetadata } from "../../lib/site-metadata";
 export const metadata = pageMetadata({
   title: "InvoiceFast",
   description:
-    "InvoiceFast — 14-day full Pro trial (no card). Bank details on PDF, VAT-inclusive ZAR. Then R79/month incl. VAT for unlimited PDFs, logo, email, 50 saved invoices.",
+    "InvoiceFast — 14-day full Pro trial (no card). Bank details on PDF, VAT-inclusive ZAR, Share on WhatsApp. After trial: 10 free PDFs/mo or R79/month incl. VAT for unlimited PDFs, logo, email, 50 saved invoices.",
   path: "/invoicefast",
   keywords: [
     "invoice generator South Africa",
@@ -15,7 +15,7 @@ export const metadata = pageMetadata({
   ],
   openGraphTitle: "InvoiceFast — Invoice Generator for South African Freelancers",
   openGraphDescription:
-    "Professional ZAR invoices with VAT-inclusive lines, bank details on PDF, and a 14-day Pro trial. Free tier or R79/month incl. VAT.",
+    "Professional ZAR invoices with VAT-inclusive lines, bank details on PDF, WhatsApp share, and a 14-day Pro trial. Free tier: 10 PDFs/mo — or R79/month incl. VAT for Pro.",
 });
 
 export default function InvoiceFastLayout({

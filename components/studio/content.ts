@@ -4,10 +4,14 @@ export const products = [
     name: "InvoiceFast",
     tagline: "Create professional invoices in minutes.",
     description:
-      "Live builder, PDF export, invoice history, and Pro features for freelancers and small teams.",
+      "Live builder, PDF export, WhatsApp share, invoice history — 10 free PDFs/mo after trial.",
     status: "Live" as const,
     href: "/invoicefast",
-    highlights: ["14-day Pro trial", "VAT-inclusive ZAR", "Pro R79 incl. VAT"],
+    highlights: [
+      "10 free PDFs/mo after trial",
+      "Share on WhatsApp",
+      "14-day Pro trial · R79 incl. VAT",
+    ],
   },
   {
     slug: "logbook",
