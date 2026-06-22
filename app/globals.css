@@ -977,13 +977,24 @@ h3 {
 
 .reveal {
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  transition: opacity 0.3s ease;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+}
+
+/* Hero copy is above the fold — show immediately (no scroll shift). */
+.hero-copy.reveal,
+.studio-hero-copy.reveal {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transition: none;
+  }
 }
 
 @media (min-width: 768px) {
