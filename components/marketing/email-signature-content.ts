@@ -99,25 +99,49 @@ export const installSteps = [
     ],
   },
   {
-    client: "Gmail",
+    client: "Gmail (web)",
     steps: [
-      "Settings → See all settings → General → Signature.",
+      "Settings (gear) → See all settings → General → Signature.",
       "Create or edit a signature.",
       "Click Copy signature on the generator, then paste into the editor.",
       logoImageGuidance.corporate,
       "Scroll down and Save Changes.",
+      "Google Workspace uses the same path — IT may lock signatures on managed accounts.",
     ],
   },
   {
-    client: "Outlook",
+    client: "Outlook on the web",
     steps: [
-      "Settings → Mail → Compose and reply → Email signature.",
-      "Paste into the signature editor (use Copy signature on the generator).",
+      "In a browser: Settings (gear) → Mail → Compose and reply → Email signature.",
+      "Create or edit a signature, then paste with Copy signature on the generator.",
       logoImageGuidance.corporate,
       "Save and send a test message.",
+      "Desktop Outlook (Windows/Mac) or New Outlook: File → Options → Signatures (classic), or Settings → Signatures in New Outlook — paste the same way.",
+    ],
+  },
+  {
+    client: "Apple Mail (Mac)",
+    steps: [
+      "Mail → Settings → Signatures → select your account → + to add (or edit).",
+      "Uncheck “Always match my default message font” if shown — helps keep your colours.",
+      "Copy signature on the generator, click inside the signature box, paste (⌘V).",
+      logoImageGuidance.corporate,
+      "Choose the signature when composing if you have more than one.",
+      "iPhone/iPad Mail is limited — set on Mac and let iCloud sync when possible.",
     ],
   },
 ];
+
+/** Shown below the install cards — clients not worth a full card. */
+export const otherClientsInstallNote = {
+  title: "Other mail apps",
+  points: [
+    "Yahoo, Zoho, Fastmail, and most hosting webmail (Roundcube, etc.): open signature settings, use Copy signature, paste, save — same idea as Gmail.",
+    "Proton Mail and other plain-text-only clients: use Copy plain text; layout will be simple lines, not the full design.",
+    "Mobile apps (Gmail, Outlook, Apple Mail on iPhone) often strip formatting — set your signature on desktop when you can.",
+    "Thunderbird or clients with an HTML/source mode: try Copy signature first; use Copy HTML source only if the app asks for raw HTML.",
+  ],
+} as const;
 
 export const signatureFaqs = [
   {

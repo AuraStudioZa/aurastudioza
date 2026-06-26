@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/web-design", "/web-design/"],
     },
     sitemap: "https://aurastudioza.com/sitemap.xml",
   };

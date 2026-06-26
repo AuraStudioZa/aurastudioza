@@ -32,6 +32,7 @@ import { ThemeToggle } from "../theme-toggle";
 import {
   emailSignatureLinks,
   installSteps,
+  otherClientsInstallNote,
   logoImageGuidance,
   signatureFaqs,
   templateGroups,
@@ -280,34 +281,38 @@ export function EmailSignaturePage() {
 
         <section className="section sig-builder-section tool-page-main">
           <div className="container">
-            <div className="sig-template-picker">
-            {templateGroups.map((group) => (
-              <div key={group.id} className="sig-template-group reveal">
-                <p className="sig-template-group-label">{group.label}</p>
-                <div className="sig-template-tabs" role="tablist" aria-label={`${group.label} templates`}>
-                  {templateOptions
-                    .filter((option) => option.group === group.id)
-                    .map((option) => (
-                      <button
-                        key={option.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={template === option.id}
-                        className={`sig-template-tab${template === option.id ? " active" : ""}`}
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={() => setTemplate(option.id)}
-                      >
-                        <span className="sig-template-tab-label">{option.label}</span>
-                        <span className="sig-template-tab-desc">{option.description}</span>
-                      </button>
-                    ))}
-                </div>
-              </div>
-            ))}
-            </div>
-
             <div className="sig-builder-grid">
               <div className="sig-form card">
+                <div className="sig-template-picker">
+                  {templateGroups.map((group) => (
+                    <div key={group.id} className="sig-template-group">
+                      <p className="sig-template-group-label">{group.label}</p>
+                      <div
+                        className="sig-template-tabs"
+                        role="tablist"
+                        aria-label={`${group.label} templates`}
+                      >
+                        {templateOptions
+                          .filter((option) => option.group === group.id)
+                          .map((option) => (
+                            <button
+                              key={option.id}
+                              type="button"
+                              role="tab"
+                              aria-selected={template === option.id}
+                              className={`sig-template-tab${template === option.id ? " active" : ""}`}
+                              onMouseDown={(e) => e.preventDefault()}
+                              onClick={() => setTemplate(option.id)}
+                            >
+                              <span className="sig-template-tab-label">{option.label}</span>
+                              <span className="sig-template-tab-desc">{option.description}</span>
+                            </button>
+                          ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="sig-form-head">
                   <h2 className="sig-panel-title">Your details</h2>
                   <button type="button" className="sig-start-over" onClick={startOver}>
@@ -599,8 +604,9 @@ export function EmailSignaturePage() {
                   <div dangerouslySetInnerHTML={{ __html: html }} />
                 </div>
                 <p className="sig-hint">
-                  Use <strong>Copy signature</strong> for Spacemail, Gmail, and Outlook visual editors — no HTML
-                  mode required. Preview uses the same table HTML that email clients receive.
+                  Use <strong>Copy signature</strong> for Spacemail, Gmail, Outlook on the web, Apple
+                  Mail, and most visual editors — no HTML mode required. Preview uses the same table
+                  HTML that email clients receive.
                 </p>
               </div>
             </div>
@@ -625,6 +631,14 @@ export function EmailSignaturePage() {
                 </article>
               ))}
             </div>
+            <aside className="sig-install-other card reveal" aria-label={otherClientsInstallNote.title}>
+              <h3>{otherClientsInstallNote.title}</h3>
+              <ul className="sig-install-other-list">
+                {otherClientsInstallNote.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </aside>
           </div>
         </section>
 

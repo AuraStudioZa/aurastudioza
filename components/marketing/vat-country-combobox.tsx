@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   formatJurisdictionOption,
   highlightMatch,
@@ -30,6 +31,12 @@ type ListHeader = {
 };
 
 type ListEntry = ListOption | ListHeader;
+
+type ListRect = {
+  top: number;
+  left: number;
+  width: number;
+};
 
 function matchJurisdictionFromQuery(query: string, currentId: string) {
   const trimmed = query.trim();
@@ -87,12 +94,17 @@ export function VatCountryCombobox({
 }: VatCountryComboboxProps) {
   const listId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
+  const fieldRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
   const pickingRef = useRef(false);
+  const blurTimeoutRef = useRef<number | null>(null);
+  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [listRect, setListRect] = useState<ListRect | null>(null);
 
   const selected = getJurisdiction(jurisdictionId);
   const entries = useMemo(
@@ -105,15 +117,46 @@ export function VatCountryCombobox({
   );
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (!open) {
       setQuery("");
       setActiveIndex(0);
+      setListRect(null);
     }
   }, [open, jurisdictionId]);
 
   useEffect(() => {
     setActiveIndex(0);
   }, [query]);
+
+  useEffect(() => {
+    if (!open || !fieldRef.current) {
+      setListRect(null);
+      return;
+    }
+
+    function updateListRect() {
+      const field = fieldRef.current;
+      if (!field) return;
+      const rect = field.getBoundingClientRect();
+      setListRect({
+        top: rect.bottom,
+        left: rect.left,
+        width: rect.width,
+      });
+    }
+
+    updateListRect();
+    window.addEventListener("resize", updateListRect);
+    window.addEventListener("scroll", updateListRect, true);
+    return () => {
+      window.removeEventListener("resize", updateListRect);
+      window.removeEventListener("scroll", updateListRect, true);
+    };
+  }, [open, entries.length]);
 
   useEffect(() => {
     if (!open || !listRef.current) return;
@@ -124,16 +167,25 @@ export function VatCountryCombobox({
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
       if (pickingRef.current) return;
-      if (!rootRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
+      const target = event.target as Node;
+      if (rootRef.current?.contains(target)) return;
+      if (portalRef.current?.contains(target)) return;
+      setOpen(false);
     }
 
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
   }, []);
 
+  function clearBlurTimeout() {
+    if (blurTimeoutRef.current !== null) {
+      window.clearTimeout(blurTimeoutRef.current);
+      blurTimeoutRef.current = null;
+    }
+  }
+
   function pick(id: string) {
+    clearBlurTimeout();
     onSelect(id);
     setOpen(false);
     setQuery("");
@@ -149,24 +201,23 @@ export function VatCountryCombobox({
     return false;
   }
 
-  function openList(selectText = false) {
+  function openList() {
+    clearBlurTimeout();
     setOpen(true);
-    if (selectText && inputRef.current) {
-      requestAnimationFrame(() => inputRef.current?.select());
-    }
+    setQuery("");
   }
 
   function onInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      setOpen(true);
+      openList();
       setActiveIndex((i) => Math.min(i + 1, Math.max(0, options.length - 1)));
       return;
     }
 
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      setOpen(true);
+      openList();
       setActiveIndex((i) => Math.max(i - 1, 0));
       return;
     }
@@ -183,13 +234,16 @@ export function VatCountryCombobox({
     }
 
     if (event.key === "Escape") {
+      clearBlurTimeout();
       setOpen(false);
       setQuery("");
     }
   }
 
   function onBlur() {
-    window.setTimeout(() => {
+    clearBlurTimeout();
+    blurTimeoutRef.current = window.setTimeout(() => {
+      blurTimeoutRef.current = null;
       if (pickingRef.current) return;
       if (open && query.trim()) {
         if (!commitQuery()) {
@@ -199,73 +253,34 @@ export function VatCountryCombobox({
         return;
       }
       setOpen(false);
-    }, 0);
+    }, 150);
   }
 
   const showList = open && options.length > 0;
+  const showEmpty = open && query.trim() && options.length === 0;
   const displayValue = open ? query : formatJurisdictionOption(selected);
   const listHeading = query.trim()
     ? `${options.length} match${options.length === 1 ? "" : "es"}`
     : "All countries";
   const inputId = `${listId}-input`;
   const activeOptionId = options[activeIndex]?.item.id;
+  const inputPlaceholder = formatJurisdictionOption(selected);
 
-  return (
-    <div className="vat-country-combobox" ref={rootRef}>
-      <label className="sig-label" htmlFor={inputId}>
-        Country / region
-      </label>
-      <div className={`vat-country-control${open ? " vat-country-control--open" : ""}`}>
-        <div className={`vat-country-field${open ? " vat-country-field--open" : ""}`}>
-          <input
-            ref={inputRef}
-            id={inputId}
-            className="sig-input vat-country-input"
-            type="text"
-            role="combobox"
-            aria-expanded={open}
-            aria-controls={showList ? `${listId}-listbox` : undefined}
-            aria-autocomplete="list"
-            autoComplete="off"
-            spellCheck={false}
-            placeholder="Choose or type — South Africa, UK, ZAR…"
-            value={displayValue}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setOpen(true);
-            }}
-            onFocus={(e) => {
-              setOpen(true);
-              setQuery(formatJurisdictionOption(selected));
-              requestAnimationFrame(() => e.target.select());
-            }}
-            onBlur={onBlur}
-            onKeyDown={onInputKeyDown}
-          />
-          <button
-            type="button"
-            className="vat-country-toggle"
-            aria-label={open ? "Close country list" : "Show all countries"}
-            aria-expanded={open}
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={() => {
-              if (open) {
-                setOpen(false);
-                setQuery("");
-                inputRef.current?.blur();
-              } else {
-                openList(true);
-                setQuery("");
-                inputRef.current?.focus();
-              }
-            }}
-          >
-            <span className="vat-country-chevron" aria-hidden />
-          </button>
-        </div>
-
+  const listPanel =
+    mounted && listRect && (showList || showEmpty) ? (
+      <div
+        ref={portalRef}
+        className="vat-country-list-portal"
+        style={{
+          position: "fixed",
+          top: listRect.top,
+          left: listRect.left,
+          width: listRect.width,
+          zIndex: 10000,
+        }}
+      >
         {showList ? (
-          <div className="vat-country-list-wrap">
+          <>
             <p className="vat-country-list-heading">{listHeading}</p>
             <ul
               ref={listRef}
@@ -318,13 +333,78 @@ export function VatCountryCombobox({
                 );
               })}
             </ul>
-          </div>
-        ) : open && query.trim() && options.length === 0 ? (
+          </>
+        ) : (
           <p className="sig-hint vat-country-empty vat-country-empty--attached">
             No match — try &ldquo;UK&rdquo;, &ldquo;ZAR&rdquo;, or &ldquo;Germany&rdquo;.
           </p>
-        ) : null}
+        )}
       </div>
+    ) : null;
+
+  return (
+    <div className="vat-country-combobox" ref={rootRef}>
+      <label className="sig-label" htmlFor={inputId}>
+        Country / region
+      </label>
+      <div className={`vat-country-control${open ? " vat-country-control--open" : ""}`}>
+        <div
+          ref={fieldRef}
+          className={`vat-country-field${open ? " vat-country-field--open" : ""}`}
+        >
+          <input
+            ref={inputRef}
+            id={inputId}
+            className="sig-input vat-country-input"
+            type="text"
+            role="combobox"
+            aria-expanded={open}
+            aria-controls={showList ? `${listId}-listbox` : undefined}
+            aria-autocomplete="list"
+            autoComplete="off"
+            spellCheck={false}
+            placeholder={inputPlaceholder}
+            value={displayValue}
+            onChange={(e) => {
+              clearBlurTimeout();
+              setQuery(e.target.value);
+              setOpen(true);
+            }}
+            onMouseDown={(e) => {
+              if (e.button !== 0) return;
+              clearBlurTimeout();
+              if (!open) openList();
+            }}
+            onFocus={() => {
+              openList();
+            }}
+            onBlur={onBlur}
+            onKeyDown={onInputKeyDown}
+          />
+          <button
+            type="button"
+            className="vat-country-toggle"
+            aria-label={open ? "Close country list" : "Show all countries"}
+            aria-expanded={open}
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              clearBlurTimeout();
+              if (open) {
+                setOpen(false);
+                setQuery("");
+                inputRef.current?.blur();
+              } else {
+                openList();
+                inputRef.current?.focus();
+              }
+            }}
+          >
+            <span className="vat-country-chevron" aria-hidden />
+          </button>
+        </div>
+      </div>
+
+      {mounted && listPanel ? createPortal(listPanel, document.body) : null}
 
       {detectNote ? <p className="sig-hint vat-detect-note">{detectNote}</p> : null}
       {!open ? (

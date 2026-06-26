@@ -16,12 +16,11 @@ export const siteLinks = {
   home: "/",
   invoicefast: "/invoicefast",
   logbook: "/logbook",
-  webDesign: "/web-design",
   emailSignature: "/email-signature",
   vatCalculator: "/vat-calculator",
-  /** Canonical InvoiceFast legal pages (app subdomain). */
-  privacy: appLinks.privacy,
-  terms: appLinks.terms,
+  /** Canonical studio legal pages (marketing site). */
+  privacy: "/privacy",
+  terms: "/terms",
   contact: "/contact",
 } as const;
 

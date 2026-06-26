@@ -23,13 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: "https://app.aurastudioza.com/privacy",
+      url: "https://aurastudioza.com/privacy",
       lastModified,
       changeFrequency: "monthly",
       priority: 0.4,
     },
     {
-      url: "https://app.aurastudioza.com/terms",
+      url: "https://aurastudioza.com/terms",
       lastModified,
       changeFrequency: "monthly",
       priority: 0.4,

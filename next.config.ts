@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const appBaseUrl =
-  process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ||
-  "https://app.aurastudioza.com";
-
 const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -22,20 +18,6 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: securityHeaders,
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: "/privacy",
-        destination: `${appBaseUrl}/privacy`,
-        permanent: true,
-      },
-      {
-        source: "/terms",
-        destination: `${appBaseUrl}/terms`,
-        permanent: true,
       },
     ];
   },
