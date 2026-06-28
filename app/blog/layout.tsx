@@ -3,19 +3,18 @@ import { pageMetadata } from "../../lib/site-metadata";
 export const metadata = pageMetadata({
   title: "Blog",
   description:
-    "Guides for South African freelancers and small businesses — VAT, invoicing, SARS logbooks, email signatures, and monthly tax habits from AuraStudioZa.",
+    "Short checklists for South African freelancers and small businesses — invoicing, records, and admin tips. Educational only; not tax advice.",
   path: "/blog",
   keywords: [
-    "freelancer blog South Africa",
-    "VAT guide South Africa",
-    "SARS logbook guide",
-    "invoice freelancer SA",
-    "small business tax tips",
+    "freelancer checklist South Africa",
+    "small business admin tips",
+    "invoice checklist SA",
+    "freelancer records",
     "AuraStudioZa blog",
   ],
-  openGraphTitle: "AuraStudioZa Blog — Guides for SA Freelancers",
+  openGraphTitle: "AuraStudioZa Blog — Checklists for SA Freelancers",
   openGraphDescription:
-    "Practical articles on VAT, invoicing, vehicle logbooks, email signatures, and monthly tax tracking for South African independent work.",
+    "Short educational articles on invoicing, travel records, VAT orientation, and email signatures for South African independent work.",
 });
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {

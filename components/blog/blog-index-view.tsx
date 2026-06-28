@@ -5,6 +5,7 @@ import { siteLinks } from "../../lib/site-links";
 import type { BlogPost } from "../../lib/blog/types";
 import { SiteFooter } from "../site-footer";
 import { SiteHeader } from "../site-header";
+import { BlogDisclaimer } from "./blog-disclaimer";
 
 type BlogIndexViewProps = {
   posts: BlogPost[];
@@ -45,11 +46,12 @@ export function BlogIndexView({ posts }: BlogIndexViewProps) {
         <div className="container">
           <div className="section-heading reveal">
             <p className="eyebrow">Blog</p>
-            <h1 className="display-heading">Practical guides for SA freelancers &amp; small business</h1>
+            <h1 className="display-heading">Short checklists for SA freelancers &amp; small business</h1>
             <p className="section-lead">
-              VAT, invoicing, mileage logs, email signatures, and monthly tax habits — written for
-              South African independent work.
+              Short checklists for South African independent work — invoicing, records, and everyday
+              admin. Not tax or legal advice.
             </p>
+            <BlogDisclaimer variant="tax" />
           </div>
           <div className="blog-index-grid">
             {posts.map((post) => (

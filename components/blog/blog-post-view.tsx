@@ -6,11 +6,21 @@ import { SiteFooter } from "../site-footer";
 import { SiteHeader } from "../site-header";
 import type { BlogPost } from "../../lib/blog/types";
 import { BlogPostCtaBanner } from "./blog-post-cta";
+import { BlogDisclaimer } from "./blog-disclaimer";
 import { SimpleMarkdown } from "./simple-markdown";
 
 type BlogPostViewProps = {
   post: BlogPost;
 };
+
+function isTaxPost(slug: string): boolean {
+  return (
+    slug.includes("vat") ||
+    slug.includes("sars") ||
+    slug.includes("tax-deadlines") ||
+    slug.includes("invoice-clients")
+  );
+}
 
 function formatDate(isoDate: string): string {
   return new Intl.DateTimeFormat("en-ZA", {
@@ -62,7 +72,9 @@ export function BlogPostView({ post }: BlogPostViewProps) {
             <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
           </p>
           <p className="blog-lead">{post.description}</p>
+          <BlogDisclaimer variant={isTaxPost(post.slug) ? "tax" : "general"} />
           <SimpleMarkdown source={post.body} />
+          <BlogDisclaimer variant={isTaxPost(post.slug) ? "tax" : "general"} />
         </article>
         <BlogPostCtaBanner cta={post.cta} />
       </main>

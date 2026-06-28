@@ -986,7 +986,8 @@ h3 {
 
 /* Hero copy is above the fold — show immediately (no scroll shift). */
 .hero-copy.reveal,
-.studio-hero-copy.reveal {
+.studio-hero-copy.reveal,
+.legal-content.reveal {
   opacity: 1;
 }
 
@@ -2382,4 +2383,23 @@ h3 {
 
 .blog-page .cta-banner {
   margin-top: var(--space-4);
+}
+
+.blog-disclaimer {
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  background: var(--color-muted-surface);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.blog-disclaimer p {
+  margin: 0;
+}
+
+.blog-disclaimer a {
+  color: var(--color-primary-strong);
+  text-decoration: underline;
 }
