@@ -17,38 +17,20 @@ import {
   getJurisdiction,
 } from "../../lib/vat-jurisdictions";
 import { siteLinks } from "../../lib/site-links";
-import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
-import { ThemeToggle } from "../theme-toggle";
+import { SiteHeader } from "../site-header";
 import { vatCalculatorLinks, vatFaqs } from "./vat-calculator-content";
 import { VatCountryCombobox } from "./vat-country-combobox";
 
 function Header() {
   return (
-    <header className="site-header glass-panel">
-      <div className="container nav-wrap">
-        <BrandLogo href="/" variant="compact" />
-        <nav aria-label="Main navigation">
-          <ul className="nav-links">
-            <li>
-              <a href={siteLinks.home}>Studio</a>
-            </li>
-            <li>
-              <a href={siteLinks.invoicefast}>InvoiceFast</a>
-            </li>
-            <li>
-              <a href="#faq">FAQ</a>
-            </li>
-          </ul>
-        </nav>
-        <div className="nav-actions">
-          <ThemeToggle />
-          <a className="btn btn-primary" href={vatCalculatorLinks.signup}>
-            Try InvoiceFast
-          </a>
-        </div>
-      </div>
-    </header>
+    <SiteHeader
+      actions={
+        <a className="btn btn-primary" href={vatCalculatorLinks.signup}>
+          Try InvoiceFast
+        </a>
+      }
+    />
   );
 }
 

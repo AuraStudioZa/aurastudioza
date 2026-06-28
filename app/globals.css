@@ -2339,7 +2339,47 @@ h3 {
   border-radius: 2px;
 }
 
-.vat-country-empty,
-.vat-detect-note {
-  margin-top: 0.35rem;
+.blog-index-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: var(--space-5);
+}
+
+.blog-card .blog-meta {
+  margin-bottom: var(--space-2);
+}
+
+.blog-meta {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.blog-lead {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-4);
+}
+
+.blog-prose h2 {
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+
+.blog-prose h3 {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.blog-prose p,
+.blog-prose li {
+  line-height: 1.65;
+}
+
+.blog-prose ul {
+  margin: var(--space-3) 0;
+  padding-left: 1.25rem;
+}
+
+.blog-page .cta-banner {
+  margin-top: var(--space-4);
 }

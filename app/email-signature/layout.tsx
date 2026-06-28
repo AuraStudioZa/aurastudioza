@@ -1,4 +1,6 @@
 import { pageMetadata } from "../../lib/site-metadata";
+import { JsonLd, faqPageJsonLd } from "../../components/json-ld";
+import { signatureFaqs } from "../../components/marketing/email-signature-content";
 
 export const metadata = pageMetadata({
   title: "Free Email Signature Generator",
@@ -7,11 +9,12 @@ export const metadata = pageMetadata({
   path: "/email-signature",
   keywords: [
     "free email signature generator",
-    "HTML email signature maker",
-    "email signature template South Africa",
-    "Gmail signature generator",
-    "Outlook email signature",
-    "freelancer email signature",
+    "HTML email signature South Africa",
+    "Gmail signature template freelancer",
+    "Outlook signature copy paste",
+    "Spacemail signature HTML",
+    "professional email footer SA",
+    "table based email signature",
   ],
   openGraphTitle: "Free Email Signature Generator | AuraStudioZa",
   openGraphDescription:
@@ -23,5 +26,10 @@ export default function EmailSignatureLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <>
+      <JsonLd data={faqPageJsonLd(signatureFaqs)} />
+      {children}
+    </>
+  );
 }

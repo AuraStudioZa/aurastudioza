@@ -24,6 +24,12 @@ export function SiteFooter({
               <a href={siteLinks.home}>Home</a>
             </li>
             <li>
+              <a href={siteLinks.about}>About</a>
+            </li>
+            <li>
+              <a href={siteLinks.blog}>Blog</a>
+            </li>
+            <li>
               <a href={siteLinks.invoicefast}>InvoiceFast</a>
             </li>
             <li>

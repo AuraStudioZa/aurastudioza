@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
+import { getAllBlogPosts } from "../lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const blogPosts = getAllBlogPosts();
 
   return [
     {
@@ -10,6 +12,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: "https://aurastudioza.com/about",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: "https://aurastudioza.com/blog",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    ...blogPosts.map((post) => ({
+      url: `https://aurastudioza.com/blog/${post.slug}`,
+      lastModified: new Date(post.updatedAt ?? post.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     {
       url: "https://aurastudioza.com/invoicefast",
       lastModified,

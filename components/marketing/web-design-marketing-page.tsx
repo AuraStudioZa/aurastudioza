@@ -2,9 +2,8 @@
 
 import { useEffect } from "react";
 import { siteLinks } from "../../lib/site-links";
-import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
-import { ThemeToggle } from "../theme-toggle";
+import { SiteHeader } from "../site-header";
 import {
   faqs,
   ongoingPlans,
@@ -15,33 +14,13 @@ import {
 
 function Header() {
   return (
-    <header className="site-header glass-panel">
-      <div className="container nav-wrap">
-        <BrandLogo href="/" variant="compact" />
-        <nav aria-label="Main navigation">
-          <ul className="nav-links">
-            <li>
-              <a href={siteLinks.home}>Studio</a>
-            </li>
-            <li>
-              <a href="/web-design#portfolio">Portfolio</a>
-            </li>
-            <li>
-              <a href="/web-design#pricing">Pricing</a>
-            </li>
-            <li>
-              <a href="/web-design#faq">FAQ</a>
-            </li>
-          </ul>
-        </nav>
-        <div className="nav-actions">
-          <ThemeToggle />
-          <a className="btn btn-primary" href={siteLinks.contact}>
-            Get a quote
-          </a>
-        </div>
-      </div>
-    </header>
+    <SiteHeader
+      actions={
+        <a className="btn btn-primary" href={siteLinks.contact}>
+          Get a quote
+        </a>
+      }
+    />
   );
 }
 

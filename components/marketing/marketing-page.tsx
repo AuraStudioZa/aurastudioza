@@ -2,47 +2,32 @@
 
 import { useEffect } from "react";
 import { appLinks, siteLinks } from "../../lib/site-links";
-import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
-import { ThemeToggle } from "../theme-toggle";
+import { SiteHeader } from "../site-header";
 import { faqs, features, plans, socialProof, steps } from "./content";
 
 type MarketingPageProps = {
   basePath?: string;
 };
 
-function Header({ basePath }: { basePath: string }) {
-  const navLinks = [
-    { href: siteLinks.home, label: "Studio" },
-    { href: `${basePath}#features`, label: "Features" },
-    { href: `${basePath}#pricing`, label: "Pricing" },
-    { href: `${basePath}#faq`, label: "FAQ" },
-  ];
-
+function Header() {
   return (
-    <header className="site-header glass-panel">
-      <div className="container nav-wrap">
-        <BrandLogo href="/" variant="compact" />
-        <nav aria-label="Main navigation">
-          <ul className="nav-links">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="nav-actions">
-          <ThemeToggle />
+    <SiteHeader
+      actions={
+        <>
           <a className="btn btn-ghost" href={appLinks.login} aria-label="Sign in to InvoiceFast">
             Sign In
           </a>
-          <a className="btn btn-primary" href={appLinks.signup} aria-label="Start 14-day Pro trial with InvoiceFast">
+          <a
+            className="btn btn-primary"
+            href={appLinks.signup}
+            aria-label="Start 14-day Pro trial with InvoiceFast"
+          >
             Start trial
           </a>
-        </div>
-      </div>
-    </header>
+        </>
+      }
+    />
   );
 }
 
@@ -298,7 +283,7 @@ export function MarketingPage({ basePath = "/invoicefast" }: MarketingPageProps)
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <Header basePath={basePath} />
+      <Header />
       <main id="main-content">
         <HeroSection basePath={basePath} />
         <SocialProofSection />

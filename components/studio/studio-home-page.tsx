@@ -3,39 +3,9 @@
 import { useEffect } from "react";
 import { BrandLogo } from "../brand-logo";
 import { SiteFooter } from "../site-footer";
-import { ThemeToggle } from "../theme-toggle";
+import { SiteHeader } from "../site-header";
 import { siteLinks } from "../../lib/site-links";
 import { freeTools, products } from "./content";
-
-function StudioHeader() {
-  return (
-    <header className="site-header glass-panel">
-      <div className="container nav-wrap">
-        <BrandLogo href="/" variant="compact" />
-        <nav aria-label="Main navigation">
-          <ul className="nav-links">
-            <li>
-              <a href="#products">Products</a>
-            </li>
-            <li>
-              <a href="#free-tools">Free tools</a>
-            </li>
-            <li>
-              <a href={siteLinks.invoicefast}>InvoiceFast</a>
-            </li>
-            <li>
-              <a href={siteLinks.logbook}>Vehicle Logbook</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-          </ul>
-        </nav>
-        <ThemeToggle />
-      </div>
-    </header>
-  );
-}
 
 export function StudioHomePage() {
   useEffect(() => {
@@ -70,7 +40,7 @@ export function StudioHomePage() {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <StudioHeader />
+      <SiteHeader />
       <main id="main-content">
         <section className="studio-hero section">
           <div className="container studio-hero-layout">
@@ -137,7 +107,8 @@ export function StudioHomePage() {
               <h2 className="display-heading display-heading-sm">Built in South Africa</h2>
               <p>
                 A solo-founder studio focused on clean UX, trustworthy workflows, and software
-                that solves real business problems—starting with InvoiceFast and Vehicle Logbook.
+                that solves real business problems—starting with InvoiceFast and Vehicle Logbook.{" "}
+                <a href={siteLinks.about}>Read our full story</a>.
               </p>
             </div>
           </div>

@@ -18,6 +18,10 @@ export const siteLinks = {
   logbook: "/logbook",
   emailSignature: "/email-signature",
   vatCalculator: "/vat-calculator",
+  /** Draft only — not in nav/sitemap until go-ahead. Route: `draft/web-design/` */
+  webDesign: "/web-design",
+  blog: "/blog",
+  about: "/about",
   /** Canonical studio legal pages (marketing site). */
   privacy: "/privacy",
   terms: "/terms",
