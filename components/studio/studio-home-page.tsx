@@ -90,11 +90,14 @@ export function StudioHomePage() {
                 </article>
               ))}
 
-              <article className="bento-card bento-soon glass-panel reveal" aria-label="More products coming">
-                <p className="product-status product-status-soon">Coming later</p>
-                <h3 className="display-heading display-heading-sm">More on the way</h3>
-                <p className="product-tagline">New tools for creators and small teams.</p>
-                <p>Future AuraStudioZa products will appear here as they launch.</p>
+              <article className="bento-card bento-soon glass-panel reveal" aria-label="Expense Report coming soon">
+                <p className="product-status product-status-soon">Coming soon</p>
+                <h3 className="display-heading display-heading-sm">Expense Report</h3>
+                <p className="product-tagline">Claim faster, get paid sooner — expense reports for contractors and teams.</p>
+                <p>
+                  PDF &amp; Excel export, receipt images, WhatsApp share, company logo — 10 free
+                  reports/mo after trial. R49/mo Pro.
+                </p>
               </article>
             </div>
           </div>

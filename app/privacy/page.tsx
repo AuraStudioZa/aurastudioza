@@ -13,12 +13,13 @@ import { pageMetadata } from "../../lib/site-metadata";
 export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "AuraStudioZa Privacy Policy — InvoiceFast, Vehicle Logbook, free tools, POPIA, and your data rights.",
+    "AuraStudioZa Privacy Policy — InvoiceFast, Vehicle Logbook, Expense Report, free tools, POPIA, and your data rights.",
   path: "/privacy",
   keywords: [
     "AuraStudioZa privacy policy",
     "InvoiceFast privacy",
     "Vehicle Logbook privacy",
+    "Expense Report privacy",
     "POPIA",
     "South Africa SaaS privacy",
   ],
@@ -45,6 +46,10 @@ export default function PrivacyPage() {
         <li>
           <strong>Vehicle Logbook</strong> — logbook app at{" "}
           <a href="https://logbook.aurastudioza.com">logbook.aurastudioza.com</a>
+        </li>
+        <li>
+          <strong>Expense Report</strong> — expense report app at{" "}
+          <a href="https://expenses.aurastudioza.com">expenses.aurastudioza.com</a>
         </li>
         <li>
           <strong>Free tools</strong> on{" "}
@@ -129,6 +134,33 @@ export default function PrivacyPage() {
         another device. Optional JSON exports you download stay on your device only.
       </p>
 
+      <h2 id="expense-report">Expense Report</h2>
+      <p>
+        Expense Report is a web-based expense report generator. When you create an account or use
+        paid features, we may process:
+      </p>
+      <ul>
+        <li>
+          <strong>Account information</strong> — email and authentication identifiers (via Clerk).
+        </li>
+        <li>
+          <strong>Expense data</strong> — employee details, expense line items, categories, receipt
+          images, company logos, and PDFs you generate.
+        </li>
+        <li>
+          <strong>Usage data</strong> — report counts and subscription status to enforce plan limits.
+        </li>
+        <li>
+          <strong>Payment metadata</strong> — subscription status from Lemon Squeezy (we do not store
+          full card numbers).
+        </li>
+      </ul>
+      <p>
+        We use this data to authenticate you, generate and deliver expense reports (including email for
+        Pro users), manage billing, and improve the service. See our{" "}
+        <a href="/terms#expense-report">Expense Report terms</a> for plan limits.
+      </p>
+
       <h2 id="free-tools">Free tools (aurastudioza.com)</h2>
       <p>
         Tools such as the <strong>email signature generator</strong> and <strong>VAT calculator</strong> run
@@ -151,10 +183,11 @@ export default function PrivacyPage() {
       <p>Depending on the product you use, processors may include:</p>
       <ul>
         <li>
-          <strong>Clerk</strong> — authentication (InvoiceFast, Vehicle Logbook)
+          <strong>Clerk</strong> — authentication (InvoiceFast, Vehicle Logbook, Expense Report)
         </li>
         <li>
-          <strong>Supabase</strong> — database and cloud sync (InvoiceFast, Vehicle Logbook)
+          <strong>Supabase</strong> — database and cloud sync (InvoiceFast, Vehicle Logbook, Expense
+          Report)
         </li>
         <li>
           <strong>Lemon Squeezy</strong> — subscriptions and payments

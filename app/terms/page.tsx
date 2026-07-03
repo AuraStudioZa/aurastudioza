@@ -1,6 +1,7 @@
 import { LegalPageShell } from "../../components/legal-page-shell";
 import { StudioLegalContact } from "../../components/studio-legal-contact";
 import {
+  EXPENSE_LIMITS,
   INVOICEFAST_LIMITS,
   LEGAL_LAST_UPDATED,
   LOGBOOK_PRICING,
@@ -11,12 +12,13 @@ import { pageMetadata } from "../../lib/site-metadata";
 export const metadata = pageMetadata({
   title: "Terms of Service",
   description:
-    "AuraStudioZa Terms of Service — InvoiceFast, Vehicle Logbook, free tools, billing, and acceptable use.",
+    "AuraStudioZa Terms of Service — InvoiceFast, Vehicle Logbook, Expense Report, free tools, billing, and acceptable use.",
   path: "/terms",
   keywords: [
     "AuraStudioZa terms of service",
     "InvoiceFast terms",
     "Vehicle Logbook terms",
+    "Expense Report terms",
     "SaaS terms South Africa",
   ],
 });
@@ -42,6 +44,10 @@ export default function TermsPage() {
         <li>
           <strong>Vehicle Logbook</strong> —{" "}
           <a href="https://logbook.aurastudioza.com">logbook.aurastudioza.com</a>
+        </li>
+        <li>
+          <strong>Expense Report</strong> —{" "}
+          <a href="https://expenses.aurastudioza.com">expenses.aurastudioza.com</a>
         </li>
         <li>
           <strong>Free tools</strong> — e.g. email signature generator and VAT calculator on{" "}
@@ -173,6 +179,45 @@ export default function TermsPage() {
           records for at least five years.
         </li>
       </ul>
+
+      <h2 id="expense-report">Expense Report</h2>
+      <p>
+        Expense Report lets you create, preview, and download professional expense reports. New
+        accounts receive a {EXPENSE_LIMITS.trialDays}-day Pro trial with full features. After the
+        trial, a free plan applies unless you subscribe.
+      </p>
+      <h3>Plans and usage limits</h3>
+      <ul>
+        <li>
+          <strong>Pro trial:</strong> {EXPENSE_LIMITS.trialDays} days of full Pro access when you
+          create an account (unlimited PDFs, no watermark, receipt images, company logo, Excel
+          export, email delivery, up to {EXPENSE_LIMITS.freeSavedReports} saved reports). One trial
+          per account. No credit card required.
+        </li>
+        <li>
+          <strong>Free plan (after trial):</strong> up to{" "}
+          {EXPENSE_LIMITS.freeMonthlyReports} watermarked PDF expense reports per calendar month,
+          up to {EXPENSE_LIMITS.freeMaxLines} expense lines per report, and up to{" "}
+          {EXPENSE_LIMITS.freeSavedReports} saved reports.
+        </li>
+        <li>
+          <strong>Pro plan (paid):</strong> unlimited PDF expense reports per month (no watermark),
+          receipt images in PDF, company logo, Excel export, email delivery, and up to{" "}
+          {EXPENSE_LIMITS.freeSavedReports} saved reports. {EXPENSE_LIMITS.proPriceInclVat}/month
+          incl. VAT (monthly billing via Lemon Squeezy; checkout may show USD).
+        </li>
+      </ul>
+      <h3>Accuracy and compliance</h3>
+      <p>
+        You are responsible for the accuracy of expense data you enter. Expense Report formats and
+        exports documents; it does not provide tax, accounting, or compliance advice. Consult a
+        qualified professional for your situation.
+      </p>
+      <h3>Subscriptions, cancellation, and refunds</h3>
+      <p>
+        Same terms as InvoiceFast above: paid plans billed via Lemon Squeezy, 14-day refund window
+        on initial purchase, cancellation stops future charges with access until end of period.
+      </p>
 
       <h2 id="free-tools">Free tools (aurastudioza.com)</h2>
       <p>

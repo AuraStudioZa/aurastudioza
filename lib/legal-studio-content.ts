@@ -1,6 +1,6 @@
 import { contactEmail } from "./site-links";
 
-export const LEGAL_LAST_UPDATED = "22 June 2026";
+export const LEGAL_LAST_UPDATED = "3 July 2026";
 
 export const STUDIO_LEGAL_NAME = "AuraStudioZa";
 
@@ -16,6 +16,14 @@ export const INVOICEFAST_LIMITS = {
 export const LOGBOOK_PRICING = {
   trial: "1 full calendar month free",
   monthlyInclVat: "R89",
+} as const;
+
+export const EXPENSE_LIMITS = {
+  trialDays: 14,
+  freeMonthlyReports: 10,
+  freeMaxLines: 5,
+  freeSavedReports: 10,
+  proPriceInclVat: "R49",
 } as const;
 
 export function legalMailto(subject: string): string {
