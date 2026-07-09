@@ -8,6 +8,7 @@ export const mainNavLinks = [
   { href: `${siteLinks.home}#free-tools`, label: "Free tools" },
   { href: siteLinks.invoicefast, label: "InvoiceFast" },
   { href: siteLinks.logbook, label: "Logbook" },
+  { href: siteLinks.expenses, label: "Expenses" },
   { href: siteLinks.blog, label: "Blog" },
   { href: siteLinks.about, label: "About" },
 ] as const;

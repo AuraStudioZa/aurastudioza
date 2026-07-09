@@ -23,6 +23,16 @@ export const products = [
     href: "/logbook",
     highlights: ["1 month free trial", "R89/mo incl. VAT", "Mar–Feb tax year"],
   },
+  {
+    slug: "expenses",
+    name: "Expense Report",
+    tagline: "Claim faster — reimbursement PDFs for contractors and teams.",
+    description:
+      "ZAR expense reports with live preview, WhatsApp share, receipt images, and spreadsheet export on Pro.",
+    status: "Live" as const,
+    href: "/expenses",
+    highlights: ["10 free PDFs/mo", "14-day Pro trial", "R49/mo incl. VAT"],
+  },
 ];
 
 export const freeTools = [

@@ -31,9 +31,11 @@ export function StudioHomePage() {
     return () => observer.disconnect();
   }, []);
 
-  const liveProducts = products.filter(
-    (p) => p.slug === "invoicefast" || p.slug === "logbook"
-  );
+  const bentoClassBySlug: Record<string, string> = {
+    invoicefast: "bento-invoicefast",
+    logbook: "bento-logbook",
+    expenses: "bento-expense",
+  };
 
   return (
     <>
@@ -63,16 +65,17 @@ export function StudioHomePage() {
               <p className="eyebrow">Products</p>
               <h2 className="display-heading display-heading-sm">Tools from AuraStudioZa</h2>
               <p className="section-lead">
-                InvoiceFast and Vehicle Logbook are live. More studio tools will join over time.
+                InvoiceFast, Vehicle Logbook, and Expense Report are live. More studio tools will
+                join over time.
               </p>
             </div>
 
             <div className="bento-grid">
-              {liveProducts.map((product) => (
+              {products.map((product) => (
                 <article
                   key={product.slug}
                   className={`bento-card glass-panel reveal ${
-                    product.slug === "invoicefast" ? "bento-invoicefast" : "bento-logbook"
+                    bentoClassBySlug[product.slug] ?? ""
                   }`}
                 >
                   <p className="product-status">{product.status}</p>
@@ -89,16 +92,6 @@ export function StudioHomePage() {
                   </a>
                 </article>
               ))}
-
-              <article className="bento-card bento-soon glass-panel reveal" aria-label="Expense Report coming soon">
-                <p className="product-status product-status-soon">Coming soon</p>
-                <h3 className="display-heading display-heading-sm">Expense Report</h3>
-                <p className="product-tagline">Claim faster, get paid sooner — expense reports for contractors and teams.</p>
-                <p>
-                  PDF &amp; Excel export, receipt images, WhatsApp share, company logo — 10 free
-                  reports/mo after trial. R49/mo Pro.
-                </p>
-              </article>
             </div>
           </div>
         </section>
@@ -110,7 +103,8 @@ export function StudioHomePage() {
               <h2 className="display-heading display-heading-sm">Built in South Africa</h2>
               <p>
                 A solo-founder studio focused on clean UX, trustworthy workflows, and software
-                that solves real business problems—starting with InvoiceFast and Vehicle Logbook.{" "}
+                that solves real business problems—starting with InvoiceFast, Vehicle Logbook, and
+                Expense Report.{" "}
                 <a href={siteLinks.about}>Read our full story</a>.
               </p>
             </div>

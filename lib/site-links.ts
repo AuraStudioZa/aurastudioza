@@ -16,6 +16,7 @@ export const siteLinks = {
   home: "/",
   invoicefast: "/invoicefast",
   logbook: "/logbook",
+  expenses: "/expenses",
   emailSignature: "/email-signature",
   vatCalculator: "/vat-calculator",
   /** Draft only — not in nav/sitemap until go-ahead. Route: `draft/web-design/` */

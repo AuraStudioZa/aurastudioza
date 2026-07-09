@@ -36,6 +36,9 @@ export function SiteFooter({
               <a href={siteLinks.logbook}>Vehicle Logbook</a>
             </li>
             <li>
+              <a href={siteLinks.expenses}>Expense Report</a>
+            </li>
+            <li>
               <a href={`${siteLinks.home}#free-tools`}>Free tools</a>
             </li>
             <li>

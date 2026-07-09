@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
   ],
   openGraphTitle: "AuraStudioZa Blog — Checklists for SA Freelancers",
   openGraphDescription:
-    "Short educational articles on invoicing, travel records, VAT orientation, and email signatures for South African independent work.",
+    "Short educational articles on invoicing, expense reports, travel records, VAT orientation, and email signatures for South African independent work.",
 });
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
