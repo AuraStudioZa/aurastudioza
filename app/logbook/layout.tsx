@@ -17,7 +17,7 @@ export const metadata = pageMetadata({
     "Mar Feb tax year mileage",
     "R89 logbook subscription",
   ],
-  openGraphTitle: "Vehicle Logbook — SARS-Ready Mileage Log for South Africa",
+  openGraphTitle: "Vehicle Logbook — KM Tracker for South African Businesses",
   openGraphDescription:
     "Log odometer stops, split business vs private km, and export monthly or Mar–Feb tax-year reports. Built for SA company car and travel allowance records.",
 });

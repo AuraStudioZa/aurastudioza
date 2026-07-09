@@ -3,6 +3,7 @@ import type { BlogPost, BlogPostCta } from "./types";
 type RawFrontmatter = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   publishedAt: string;
   updatedAt?: string;
@@ -91,6 +92,7 @@ export function parseBlogMarkdown(source: string): BlogPost {
   const post: BlogPost = {
     slug: scalar.slug,
     title: scalar.title,
+    seoTitle: scalar.seoTitle,
     description: scalar.description,
     publishedAt: scalar.publishedAt,
     updatedAt: scalar.updatedAt,

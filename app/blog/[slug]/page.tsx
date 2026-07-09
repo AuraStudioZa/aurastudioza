@@ -19,8 +19,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return { title: "Article not found" };
   }
 
+  const metadataTitle = post.seoTitle ?? post.title;
+
   const base = pageMetadata({
-    title: post.title,
+    title: metadataTitle,
     description: post.description,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,

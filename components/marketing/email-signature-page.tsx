@@ -249,7 +249,7 @@ export function EmailSignaturePage() {
           <div className="container">
             <div className="hero-copy reveal">
               <p className="eyebrow">Free tool by AuraStudioZa</p>
-              <h1>Email signature generator for freelancers and creatives.</h1>
+              <h1>Email signature generator for freelancers, creatives, and small businesses.</h1>
               <p className="hero-subheadline">
                 Build a professional HTML signature, preview it live, and copy into Gmail, Outlook,
                 or Spacemail. No sign-up required.

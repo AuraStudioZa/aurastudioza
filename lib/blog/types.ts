@@ -10,6 +10,8 @@ export type BlogPostCta = {
 export type BlogPost = {
   slug: string;
   title: string;
+  /** Optional shorter title for `<title>` / metadata only; H1 always uses `title`. */
+  seoTitle?: string;
   description: string;
   publishedAt: string;
   updatedAt?: string;

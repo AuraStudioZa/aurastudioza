@@ -1,7 +1,7 @@
 import { pageMetadata } from "../../lib/site-metadata";
 
 export const metadata = pageMetadata({
-  title: "Blog",
+  title: "Freelancer Checklists & Tips — SA",
   description:
     "Short checklists for South African freelancers and small businesses — invoicing, records, and admin tips. Educational only; not tax advice.",
   path: "/blog",

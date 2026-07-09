@@ -10,6 +10,7 @@ import {
   logbookFeatures,
   logbookSteps,
 } from "./logbook-content";
+import { LogbookHeroPreview } from "./logbook-hero-preview";
 
 function Header() {
   return (
@@ -55,7 +56,7 @@ export function LogbookMarketingPage() {
               <h1>Company car mileage, without spreadsheet pain.</h1>
               <p className="hero-subheadline">
                 Log odometer stops, split business vs private km, and export monthly or annual
-                travel logs — built for South African reporting periods.
+                travel logs from a km tracker — built for South African reporting periods.
               </p>
               <div className="hero-cta-group">
                 <a className="btn btn-primary btn-lg" href={logbookAppUrl}>
@@ -77,24 +78,7 @@ export function LogbookMarketingPage() {
                 Live preview
               </p>
               <div className="hero-screenshot hero-screenshot-phone">
-                <img
-                  className="logbook-preview logbook-preview-light"
-                  src="/logbook-live-preview-light.png"
-                  alt="Vehicle Logbook dashboard in light mode — period stats and today's business and private stops."
-                  width={390}
-                  height={844}
-                  loading="eager"
-                  decoding="async"
-                />
-                <img
-                  className="logbook-preview logbook-preview-dark"
-                  src="/logbook-live-preview-dark.png"
-                  alt="Vehicle Logbook dashboard in dark mode — period stats and today's business and private stops."
-                  width={390}
-                  height={844}
-                  loading="eager"
-                  decoding="async"
-                />
+                <LogbookHeroPreview />
               </div>
             </div>
           </div>
@@ -105,6 +89,10 @@ export function LogbookMarketingPage() {
             <div className="section-heading reveal">
               <p className="eyebrow">Features</p>
               <h2>Built for monthly and annual mileage reporting</h2>
+              <p className="section-lead">
+                A mileage log app that South African businesses can use on phone or desktop — and a business
+                travel logbook you can export when month-end or year-end reporting comes around.
+              </p>
             </div>
             <div className="feature-grid">
               {logbookFeatures.map((feature) => (
@@ -201,6 +189,18 @@ export function LogbookMarketingPage() {
             </div>
             <a className="btn btn-primary btn-lg" href={logbookAppUrl}>
               Go to logbook.aurastudioza.com
+            </a>
+          </div>
+        </section>
+
+        <section className="section muted-section" aria-label="Related reading">
+          <div className="container reveal">
+            <p className="eyebrow">Related reading</p>
+            <a
+              className="btn btn-secondary"
+              href={`${siteLinks.blog}/sars-vehicle-logbook-requirements-explained`}
+            >
+              What SARS expects in a vehicle logbook
             </a>
           </div>
         </section>

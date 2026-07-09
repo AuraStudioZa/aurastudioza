@@ -1,6 +1,7 @@
 ---
 slug: email-signature-best-practices-small-business
 title: Email signatures for small businesses — practical tips
+seoTitle: Small Business Email Signature Tips
 description: Short tips for professional HTML email signatures in Gmail, Outlook, and Spacemail — branding and clarity, not legal advice on bulk marketing.
 publishedAt: 2026-06-08
 updatedAt: 2026-06-16

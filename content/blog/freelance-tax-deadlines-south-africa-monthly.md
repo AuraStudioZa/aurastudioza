@@ -1,6 +1,7 @@
 ---
 slug: freelance-tax-deadlines-south-africa-monthly
 title: Monthly admin habits for freelance tax season in South Africa
+seoTitle: Monthly Freelance Tax Habits — SA Checklist
 description: A short monthly checklist for freelancers — records, cash flow, and calendar reminders — not a substitute for SARS deadlines or practitioner advice.
 publishedAt: 2026-06-12
 updatedAt: 2026-06-16

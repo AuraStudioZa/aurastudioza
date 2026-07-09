@@ -1,6 +1,7 @@
 ---
 slug: how-vat-works-freelancers-south-africa-2026
 title: VAT for South African freelancers — starter checklist
+seoTitle: VAT for SA Freelancers — Starter Checklist
 description: A short orientation on VAT registration, quoting, and record-keeping for freelancers — confirm details with SARS before you act.
 publishedAt: 2026-05-15
 updatedAt: 2026-06-16

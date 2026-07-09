@@ -5,7 +5,7 @@ import { faqs } from "../../components/marketing/content";
 export const metadata = pageMetadata({
   title: "InvoiceFast",
   description:
-    "InvoiceFast — 14-day full Pro trial (no card). Bank details on PDF, VAT-inclusive ZAR, Share on WhatsApp. After trial: 10 free PDFs/mo or R79/month incl. VAT for unlimited PDFs, logo, email, 50 saved invoices.",
+    "14-day Pro trial, no card. ZAR invoices with VAT, bank details on PDF & WhatsApp share. Then 10 free PDFs/mo or R79/mo incl. VAT for unlimited exports.",
   path: "/invoicefast",
   keywords: [
     "InvoiceFast",

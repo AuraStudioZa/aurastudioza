@@ -1,6 +1,7 @@
 ---
 slug: how-to-invoice-clients-freelancer-south-africa
 title: Invoicing clients as a freelancer — simple checklist
+seoTitle: Freelancer Invoicing Checklist — South Africa
 description: What to include on a professional South African invoice, payment habits, and record-keeping — general business tips, not tax advice.
 publishedAt: 2026-06-01
 updatedAt: 2026-06-16

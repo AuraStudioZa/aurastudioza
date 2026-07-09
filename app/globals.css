@@ -593,18 +593,6 @@ h3 {
   border-radius: 1.35rem;
 }
 
-.hero-screenshot-phone .logbook-preview-dark {
-  display: none;
-}
-
-[data-theme="dark"] .hero-screenshot-phone .logbook-preview-light {
-  display: none;
-}
-
-[data-theme="dark"] .hero-screenshot-phone .logbook-preview-dark {
-  display: block;
-}
-
 .mockup-header {
   display: flex;
   align-items: center;

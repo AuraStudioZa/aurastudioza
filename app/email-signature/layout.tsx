@@ -1,11 +1,11 @@
 import { pageMetadata } from "../../lib/site-metadata";
-import { JsonLd, faqPageJsonLd } from "../../components/json-ld";
+import { JsonLd, faqPageJsonLd, softwareApplicationJsonLd } from "../../components/json-ld";
 import { signatureFaqs } from "../../components/marketing/email-signature-content";
 
 export const metadata = pageMetadata({
   title: "Free Email Signature Generator",
   description:
-    "Free email signature generator for South African freelancers and creatives. Build HTML signatures, copy into Gmail, Outlook, or Spacemail — no sign-up required.",
+    "Free small business email signature generator for SA freelancers. Build HTML signatures, copy into Gmail, Outlook, or Spacemail — no sign-up required.",
   path: "/email-signature",
   keywords: [
     "free email signature generator",
@@ -29,6 +29,15 @@ export default function EmailSignatureLayout({
   return (
     <>
       <JsonLd data={faqPageJsonLd(signatureFaqs)} />
+      <JsonLd
+        data={softwareApplicationJsonLd({
+          name: "Free Email Signature Generator",
+          description:
+            "Free small business email signature generator for SA freelancers. Build HTML signatures with live preview and copy into Gmail, Outlook, or Spacemail — no sign-up required.",
+          url: "https://aurastudioza.com/email-signature",
+          price: 0,
+        })}
+      />
       {children}
     </>
   );
