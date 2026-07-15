@@ -190,21 +190,25 @@ export default function TermsPage() {
       <ul>
         <li>
           <strong>Pro trial:</strong> {EXPENSE_LIMITS.trialDays} days of full Pro access when you
-          create an account (unlimited PDFs, no watermark, receipt images, company logo, Excel
-          export, email delivery, up to {EXPENSE_LIMITS.freeSavedReports} saved reports). One trial
+          create an account (unlimited PDFs, no watermark, receipt images, company logo, spreadsheet
+          export, email delivery, up to {EXPENSE_LIMITS.proSavedReports} saved reports). One trial
           per account. No credit card required.
         </li>
         <li>
           <strong>Free plan (after trial):</strong> up to{" "}
           {EXPENSE_LIMITS.freeMonthlyReports} watermarked PDF expense reports per calendar month,
           up to {EXPENSE_LIMITS.freeMaxLines} expense lines per report, and up to{" "}
-          {EXPENSE_LIMITS.freeSavedReports} saved reports.
+          {EXPENSE_LIMITS.freeSavedReports} saved reports. When you save a new report beyond that
+          limit, the oldest saved report is permanently removed.
         </li>
         <li>
           <strong>Pro plan (paid):</strong> unlimited PDF expense reports per month (no watermark),
-          receipt images in PDF, company logo, Excel export, email delivery, and up to{" "}
-          {EXPENSE_LIMITS.freeSavedReports} saved reports. {EXPENSE_LIMITS.proPriceInclVat}/month
-          incl. VAT (monthly billing via Lemon Squeezy; checkout may show USD).
+          receipt images in PDF, company logo, spreadsheet export, email delivery, and up to{" "}
+          {EXPENSE_LIMITS.proSavedReports} saved reports. When you save a new report beyond that
+          limit, the oldest saved report is permanently removed (not recoverable in the app).
+          Download PDFs if you need long-term records.{" "}
+          {EXPENSE_LIMITS.proPriceInclVat}/month incl. VAT (monthly billing via Lemon Squeezy;
+          checkout may show USD).
         </li>
       </ul>
       <h3>Accuracy and compliance</h3>

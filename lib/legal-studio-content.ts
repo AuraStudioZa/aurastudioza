@@ -1,6 +1,6 @@
 import { contactEmail } from "./site-links";
 
-export const LEGAL_LAST_UPDATED = "3 July 2026";
+export const LEGAL_LAST_UPDATED = "15 July 2026";
 
 export const STUDIO_LEGAL_NAME = "AuraStudioZa";
 
@@ -18,11 +18,13 @@ export const LOGBOOK_PRICING = {
   monthlyInclVat: "R89",
 } as const;
 
+/** Expense Report plan limits — keep in sync with Expense Report usage-constants. */
 export const EXPENSE_LIMITS = {
   trialDays: 14,
   freeMonthlyReports: 10,
   freeMaxLines: 5,
   freeSavedReports: 10,
+  proSavedReports: 50,
   proPriceInclVat: "R49",
 } as const;
 

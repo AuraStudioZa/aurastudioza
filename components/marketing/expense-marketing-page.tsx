@@ -152,7 +152,7 @@ export function ExpenseMarketingPage() {
                 <ul>
                   <li>Logo on PDF</li>
                   <li>Receipt images in PDF</li>
-                  <li>Up to 10 saved reports</li>
+                  <li>Up to 50 saved reports (oldest removed when full)</li>
                 </ul>
                 <a className="btn btn-primary btn-full" href={expenseAppUrl}>
                   Start free trial
@@ -166,8 +166,8 @@ export function ExpenseMarketingPage() {
                 </p>
                 <p className="price-subtext">Or stay on Free — 10 PDFs/mo with watermark</p>
                 <ul>
-                  <li>Free: 5 lines per report, WhatsApp share</li>
-                  <li>Pro: unlimited PDFs, spreadsheet (.xlsx), email</li>
+                  <li>Free: 5 lines per report, 10 saved, WhatsApp share</li>
+                  <li>Pro: unlimited PDFs, spreadsheet (.xlsx), email, 50 saved</li>
                   <li>Cancel anytime in billing portal</li>
                 </ul>
               </article>
