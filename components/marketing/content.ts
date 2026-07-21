@@ -29,7 +29,7 @@ export const features = [
   {
     title: "Share on WhatsApp",
     description:
-      "Send the PDF and a prefilled payment message to clients in one tap from the app.",
+      "Prepare your PDF, then share it through your device's share sheet—choose WhatsApp where available.",
   },
   {
     title: "CSV exports",

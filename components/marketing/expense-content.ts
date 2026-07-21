@@ -15,7 +15,7 @@ export const expenseFeatures = [
   {
     title: "Share on WhatsApp",
     description:
-      "Download your PDF and share with a prefilled message — handy when your manager wants the report in chat.",
+      "Prepare your PDF, then share it through your device's share sheet—choose WhatsApp where available.",
   },
   {
     title: "Receipt images on Pro",
@@ -50,7 +50,8 @@ export const expenseSteps = [
   },
   {
     title: "Export or share",
-    description: "Download PDF or spreadsheet, share on WhatsApp, or email the report on Pro.",
+    description:
+      "Download PDF or spreadsheet, use your device's share sheet for WhatsApp where available, or email the report on Pro.",
   },
 ];
 
@@ -58,7 +59,7 @@ export const expenseFaqs = [
   {
     question: "Is there a free plan?",
     answer:
-      "Yes — 10 watermarked PDF reports per month, up to 5 expense lines per report, and WhatsApp share. New accounts also get a 14-day Pro trial with full features.",
+      "Yes — 10 watermarked PDF reports per month, up to 5 expense lines per report, and device share-sheet access for WhatsApp where available. New accounts also get a 14-day Pro trial with full features.",
   },
   {
     question: "How much does Pro cost?",

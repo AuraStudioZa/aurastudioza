@@ -61,8 +61,9 @@ export function ExpenseMarketingPage() {
               <p className="eyebrow">Expense Report by AuraStudioZa</p>
               <h1>Expense reports for SA contractors — PDF in minutes.</h1>
               <p className="hero-subheadline">
-                10 free PDFs per month, ZAR by default, and Share on WhatsApp. Pro adds receipts,
-                spreadsheet export, and email — R49/mo incl. VAT.
+                10 free PDFs per month and ZAR by default. Prepare a PDF, then choose WhatsApp from
+                your device&apos;s share sheet where available. Pro adds receipts, spreadsheet export,
+                and email — R49/mo incl. VAT.
               </p>
               <div className="hero-cta-group">
                 <a className="btn btn-primary btn-lg" href={expenseAppUrl}>
